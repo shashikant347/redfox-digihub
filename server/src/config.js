@@ -25,7 +25,7 @@ export const config = {
   port: Number(process.env.PORT) || 5000,
   env,
   isProd,
-  clientOrigin: process.env.CLIENT_ORIGIN || 'http://localhost:5173',
+  clientOrigin: process.env.CLIENT_ORIGIN || (isProd ? '' : 'http://localhost:5173'),
   mongoUri: process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/redfox',
   jwtSecret,
   cookieSecure: process.env.COOKIE_SECURE ? process.env.COOKIE_SECURE === 'true' : isProd,

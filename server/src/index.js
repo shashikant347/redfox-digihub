@@ -31,7 +31,7 @@ app.use(
     },
   })
 );
-app.use(cors({ origin: config.isProd ? false : config.clientOrigin, credentials: true }));
+app.use(cors({ origin: config.clientOrigin || false, credentials: true }));
 app.use(cookieParser());
 
 // ---- API ----
