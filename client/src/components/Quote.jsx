@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { submitQuote } from '../api/client.js';
+import { assetUrl } from '../api/config.js';
 import SocialLinks from './SocialLinks.jsx';
 
 const EMPTY = { name: '', contact: '', service: '', details: '', website: '' };
@@ -53,7 +54,7 @@ export default function Quote({ brand, services, image }) {
     <section id="quote" className="qt-sec">
       <div className="qt">
         <div className="qt-card rvx">
-          {image && <img className="qt-card-art" src={image.src} alt="" loading="lazy" />}
+          {image && <img className="qt-card-art" src={assetUrl(image.src)} alt="" loading="lazy" />}
           <span className="tag">Get a quote</span>
           <h2>Tell us about your project</h2>
           <p className="lead">Fill in the form and we reply with a plan, timeline and quote.</p>

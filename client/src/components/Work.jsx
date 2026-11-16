@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { assetUrl } from '../api/config.js';
 
 /** preview = home page version: 3 tiles, no filter, link to the full Work page. */
 export default function Work({ filters, items, preview = false, heading = true, tag, title, lead }) {
@@ -29,7 +30,7 @@ export default function Work({ filters, items, preview = false, heading = true, 
           <div
             key={w.id}
             className={`tile ${w.tone || 't1'}${w.image ? ' has-img' : ''}`}
-            style={w.image ? { backgroundImage: `url(${w.image})` } : undefined}
+            style={w.image ? { backgroundImage: `url(${assetUrl(w.image)})` } : undefined}
             hidden={!preview && filter !== 'all' && w.category !== filter}
           >
             <div>

@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { api } from './api.js';
+import { assetUrl } from '../api/config.js';
 
 export function Notice({ notice }) {
   if (!notice) return null;
@@ -49,7 +50,7 @@ export function ImageField({ label = 'Image', value, onChange, error }) {
     <div className="ad-field">
       <span className="ad-label">{label}</span>
       <div className="ad-img">
-        {value ? <img src={value} alt="" /> : <div className="ad-img-empty">No image</div>}
+        {value ? <img src={assetUrl(value)} alt="" /> : <div className="ad-img-empty">No image</div>}
         <div className="ad-img-btns">
           <button type="button" className="ad-btn ghost" onClick={() => ref.current?.click()} disabled={busy}>
             {busy ? 'Uploading…' : value ? 'Replace image' : 'Upload image'}

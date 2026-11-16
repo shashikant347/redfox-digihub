@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
+import { assetUrl } from '../api/config.js';
 
 export default function ServiceCard({ service, index, compact = false }) {
   const s = service;
   return (
     <article className="svc-card rvx">
       <Link className="svc-card-fig" to={`/services/${s.id}`} tabIndex={-1} aria-hidden="true">
-        <img src={s.image} alt="" loading="lazy" />
+        <img src={assetUrl(s.image)} alt="" loading="lazy" />
         {typeof index === 'number' && <span className="svc-card-n">{String(index + 1).padStart(2, '0')}</span>}
       </Link>
       <div className="svc-card-body">

@@ -1,6 +1,8 @@
+import { apiUrl } from '../api/config.js';
+
 // All admin calls. The login cookie is httpOnly, so the browser sends it automatically.
 async function request(path, { method = 'GET', body, form } = {}) {
-  const opts = { method, credentials: 'same-origin', headers: {} };
+  const opts = { method, credentials: 'include', headers: {} };
   if (form) opts.body = form;
   else if (body !== undefined) {
     opts.headers['Content-Type'] = 'application/json';
@@ -8,7 +10,7 @@ async function request(path, { method = 'GET', body, form } = {}) {
   }
   let res;
   try {
-    res = await fetch(`/api/admin${path}`, opts);
+    res = await fetch(apiUrl(`/api/admin${path}`), opts);
   } catch {
     throw new Error('Cannot reach the server. Check your connection.');
   }

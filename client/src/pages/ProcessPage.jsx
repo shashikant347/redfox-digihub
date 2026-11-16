@@ -4,6 +4,7 @@ import InfoCards from '../components/InfoCards.jsx';
 import FindUs from '../components/FindUs.jsx';
 import CtaBand from '../components/CtaBand.jsx';
 import useSeo from '../hooks/useSeo.js';
+import { assetUrl } from '../api/config.js';
 
 export default function ProcessPage({ content }) {
   useSeo(content, 'process');
@@ -14,7 +15,7 @@ export default function ProcessPage({ content }) {
       <div className="pg-split">
         <Process steps={process} heading={false} />
         <figure className="pg-fig pg-fig-side rvx">
-          <img src={images.process.src} alt={images.process.alt} loading="lazy" />
+          <img src={assetUrl(images.process.src)} alt={images.process.alt} loading="lazy" />
         </figure>
       </div>
       <InfoCards {...content.extra.needFromYou} variant="checks" />

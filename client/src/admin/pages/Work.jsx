@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api.js';
 import { Field, Input, ImageField, Notice } from '../ui.jsx';
+import { assetUrl } from '../../api/config.js';
 
 const BLANK = { title: '', category: '', kind: '', image: '' };
 
@@ -58,7 +59,7 @@ export default function WorkAdmin() {
         <div className="ad-card ad-table-wrap"><table className="ad-table"><tbody>
           {items.map((w, i) => (
             <tr key={w._id}>
-              <td style={{ width: 70 }}>{w.image ? <img className="ad-thumb" src={w.image} alt="" /> : <span className="ad-hint">No image</span>}</td>
+              <td style={{ width: 70 }}>{w.image ? <img className="ad-thumb" src={assetUrl(w.image)} alt="" /> : <span className="ad-hint">No image</span>}</td>
               <td><b>{w.title}</b><br /><small>{w.kind}</small></td>
               <td className="ad-actions">
                 <button type="button" onClick={() => move(i, -1)} disabled={i === 0} aria-label="Move up">↑</button>

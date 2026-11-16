@@ -5,6 +5,7 @@ import ServiceCard from '../components/ServiceCard.jsx';
 import Band from '../components/Band.jsx';
 import NotFound from './NotFound.jsx';
 import useSeo from '../hooks/useSeo.js';
+import { assetUrl } from '../api/config.js';
 
 export default function ServiceDetail({ content }) {
   const { id } = useParams();
@@ -34,7 +35,7 @@ export default function ServiceDetail({ content }) {
           </div>
         </div>
         <figure className="pg-fig ab-hero-fig rvx">
-          <img src={s.image} alt={`${s.title} illustration`} />
+          <img src={assetUrl(s.image)} alt={`${s.title} illustration`} />
         </figure>
       </section>
 

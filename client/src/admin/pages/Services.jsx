@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api } from '../api.js';
 import { Field, Input, ImageField, StringList, PairList, QAList, Notice } from '../ui.jsx';
+import { assetUrl } from '../../api/config.js';
 
 export function ServiceList() {
   const [items, setItems] = useState(null);
@@ -31,7 +32,7 @@ export function ServiceList() {
         <div className="ad-card ad-table-wrap"><table className="ad-table"><tbody>
           {items.map((s, i) => (
             <tr key={s._id}>
-              <td style={{ width: 70 }}>{s.image ? <img className="ad-thumb" src={s.image} alt="" /> : null}</td>
+              <td style={{ width: 70 }}>{s.image ? <img className="ad-thumb" src={assetUrl(s.image)} alt="" /> : null}</td>
               <td><b>{s.title}</b><br /><small>/services/{s.slug}</small></td>
               <td className="ad-actions">
                 <button type="button" onClick={() => move(i, -1)} disabled={i === 0} aria-label="Move up">↑</button>

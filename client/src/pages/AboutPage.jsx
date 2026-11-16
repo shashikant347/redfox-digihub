@@ -7,6 +7,7 @@ import InfoCards from '../components/InfoCards.jsx';
 import FindUs from '../components/FindUs.jsx';
 import CtaBand from '../components/CtaBand.jsx';
 import useSeo from '../hooks/useSeo.js';
+import { assetUrl } from '../api/config.js';
 
 export default function AboutPage({ content }) {
   useSeo(content, 'about');
@@ -26,7 +27,7 @@ export default function AboutPage({ content }) {
           </div>
         </div>
         <figure className="pg-fig ab-hero-fig rvx">
-          <img src={images.aboutHero.src} alt={images.aboutHero.alt} />
+          <img src={assetUrl(images.aboutHero.src)} alt={images.aboutHero.alt} />
         </figure>
       </section>
 
@@ -40,7 +41,7 @@ export default function AboutPage({ content }) {
       {/* 3. Story */}
       <section className="ab-story" id="story">
         <figure className="pg-fig ab-story-fig rvx">
-          <img src={images.aboutStory.src} alt={images.aboutStory.alt} loading="lazy" />
+          <img src={assetUrl(images.aboutStory.src)} alt={images.aboutStory.alt} loading="lazy" />
         </figure>
         <div>
           <span className="tag rvx">{pages.about.storyTag}</span>
@@ -72,7 +73,7 @@ export default function AboutPage({ content }) {
         <div className="ab-team">
           {about.team.map((t) => (
             <article className="ab-card rvx" key={t.role}>
-              <img src={t.image} alt="" loading="lazy" />
+              <img src={assetUrl(t.image)} alt="" loading="lazy" />
               <div>
                 <h3>{t.role}</h3>
                 <p>{t.text}</p>

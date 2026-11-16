@@ -1,8 +1,10 @@
+import { apiUrl } from './config.js';
+
 // All calls to the Node backend live here.
 async function request(path, options) {
   let res;
   try {
-    res = await fetch(path, options);
+    res = await fetch(apiUrl(path), options);
   } catch {
     throw new Error('Cannot reach the server. Check your connection and try again.');
   }
