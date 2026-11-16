@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of a browser window with code, for web development"><rect width="800" height="600" fill="#f1dfd7"/>
+<rect x="80" y="80" width="640" height="440" rx="16" fill="#fffdf9" stroke="#20221f" stroke-width="6"/>
+<path d="M80 150 H720" stroke="#20221f" stroke-width="6"/><circle cx="118" cy="115" r="11" fill="#20221f"/><circle cx="150" cy="115" r="11" fill="#edc8ba"/><circle cx="182" cy="115" r="11" fill="#cad9d0"/><rect x="230" y="102" width="360" height="26" rx="13" fill="#eee9e1"/>
+<rect x="120" y="190" width="120" height="14" rx="7" fill="#20221f"/><rect x="160" y="226" width="260" height="14" rx="7" fill="#20221f"/><rect x="160" y="262" width="180" height="14" rx="7" fill="#eee9e1"/>
+<rect x="120" y="298" width="200" height="14" rx="7" fill="#eee9e1"/><rect x="160" y="334" width="300" height="14" rx="7" fill="#20221f"/><rect x="200" y="370" width="150" height="14" rx="7" fill="#20221f"/><rect x="160" y="406" width="220" height="14" rx="7" fill="#eee9e1"/><rect x="120" y="442" width="110" height="14" rx="7" fill="#20221f"/>
+<text x="600" y="400" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="150" fill="#20221f">&lt;/&gt;</text></svg>

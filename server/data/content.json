@@ -1,0 +1,919 @@
+{
+  "brand": {
+    "name": "REDFOX",
+    "tagline": "Advertising & Marketing",
+    "website": "www.redfoxonline.in",
+    "email": "info@redfoxonline.in",
+    "facebook": "@redfoxonline",
+    "motto": "creating next",
+    "social": [
+      {
+        "id": "facebook",
+        "label": "Facebook",
+        "handle": "@redfoxonline",
+        "url": "https://www.facebook.com/redfoxonline"
+      },
+      {
+        "id": "instagram",
+        "label": "Instagram",
+        "handle": "@redfox.online",
+        "url": "https://www.instagram.com/redfox.online"
+      },
+      {
+        "id": "youtube",
+        "label": "YouTube",
+        "handle": "@redfoxonline",
+        "url": "https://www.youtube.com/@redfoxonline"
+      },
+      {
+        "id": "linkedin",
+        "label": "LinkedIn",
+        "handle": "redfoxonline",
+        "url": "https://www.linkedin.com/in/redfoxonline"
+      },
+      {
+        "id": "x",
+        "label": "X (Twitter)",
+        "handle": "@onlineredfox",
+        "url": "https://x.com/onlineredfox"
+      },
+      {
+        "id": "behance",
+        "label": "Behance",
+        "handle": "redfoxonline",
+        "url": "https://www.behance.net/redfoxonline"
+      }
+    ],
+    "address": "Rajendra Nagar, Patna, Bihar, India",
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Rajendra+Nagar+Patna+Bihar+India",
+    "phone": "+91 97096 00011",
+    "phoneHref": "tel:+919709600011",
+    "whatsapp": "https://wa.me/919709600011?text=Hi%20REDFOX%2C%20I%20would%20like%20a%20quote."
+  },
+  "services": [
+    {
+      "id": "brand-design",
+      "title": "Brand Design",
+      "text": "Logos, colours, fonts and guidelines that make your business easy to recognise.",
+      "points": [
+        "Logo and colour palette",
+        "Fonts and brand guidelines",
+        "Business cards, stationery and social kit"
+      ],
+      "image": "/images/service-brand-design.svg",
+      "detail": {
+        "headline": "A brand people recognise and remember",
+        "intro": "Your brand is more than a logo. It is the colours, fonts, tone and feeling people connect with your business. We build a clear identity so you look the same everywhere, from your shop board to your Instagram page.",
+        "benefits": [
+          {
+            "title": "Stand out",
+            "text": "A distinct look that separates you from similar businesses around you."
+          },
+          {
+            "title": "Build trust",
+            "text": "A consistent, professional identity makes customers feel safe choosing you."
+          },
+          {
+            "title": "Save time",
+            "text": "Brand guidelines mean every future poster, post or page is quick to make."
+          },
+          {
+            "title": "Grow with you",
+            "text": "We design an identity that still works as your business expands."
+          }
+        ],
+        "deliverables": [
+          "Logo in main and alternate versions",
+          "Colour palette and fonts",
+          "Brand guidelines document",
+          "Business cards and stationery",
+          "Social media profile kit",
+          "Logo files for print and web"
+        ],
+        "steps": [
+          {
+            "title": "Discover",
+            "text": "We learn about your business, customers and competitors."
+          },
+          {
+            "title": "Concepts",
+            "text": "You review logo and style directions and pick what fits."
+          },
+          {
+            "title": "Refine",
+            "text": "We polish the chosen direction using your feedback."
+          },
+          {
+            "title": "Deliver",
+            "text": "You receive final files and a guide so the brand stays consistent."
+          }
+        ],
+        "forWho": [
+          "New businesses",
+          "Rebranding",
+          "Shops & retail",
+          "Jewellery",
+          "Food brands",
+          "Startups"
+        ],
+        "faqs": [
+          {
+            "q": "Can you refresh my existing logo?",
+            "a": "Yes. We can modernise what you have or start fresh, whichever suits your goals and budget."
+          },
+          {
+            "q": "Will I get files for print and online?",
+            "a": "Yes. You get logo files ready for print, social media and your website."
+          },
+          {
+            "q": "What are brand guidelines?",
+            "a": "A short guide that shows how to use your logo, colours and fonts so every design looks consistent."
+          }
+        ]
+      }
+    },
+    {
+      "id": "web-development",
+      "title": "Web Development",
+      "text": "Fast, secure, mobile-friendly websites and apps built with clean code.",
+      "points": [
+        "Responsive business websites",
+        "Forms, booking and payments",
+        "Speed, security and SEO basics"
+      ],
+      "image": "/images/service-web-development.svg",
+      "detail": {
+        "headline": "Websites that load fast and work everywhere",
+        "intro": "We build clean, secure websites and web apps that run smoothly on every phone, tablet and computer. From a simple business site to booking and payment features, we build what your business actually needs.",
+        "benefits": [
+          {
+            "title": "Fast loading",
+            "text": "Light, well-built pages that keep visitors from leaving."
+          },
+          {
+            "title": "Secure",
+            "text": "Safe forms, protected data and sensible security from day one."
+          },
+          {
+            "title": "Easy to grow",
+            "text": "Clean code that lets you add pages and features later."
+          },
+          {
+            "title": "Found on Google",
+            "text": "SEO basics built in so search engines can understand your site."
+          }
+        ],
+        "deliverables": [
+          "Responsive multi-page website",
+          "Contact, enquiry and booking forms",
+          "Payment and checkout where needed",
+          "Speed and security setup",
+          "Basic SEO set-up",
+          "Launch and post-launch support"
+        ],
+        "steps": [
+          {
+            "title": "Plan",
+            "text": "We agree pages, features and the technology that fit your needs."
+          },
+          {
+            "title": "Build",
+            "text": "We develop the site and share a preview link for your review."
+          },
+          {
+            "title": "Test",
+            "text": "We check it on real phones, tablets and browsers."
+          },
+          {
+            "title": "Launch",
+            "text": "We go live, then keep an eye on performance and fixes."
+          }
+        ],
+        "forWho": [
+          "Business websites",
+          "Online stores",
+          "Booking sites",
+          "Portfolios",
+          "Landing pages",
+          "Custom web apps"
+        ],
+        "faqs": [
+          {
+            "q": "Will my website work on mobile?",
+            "a": "Yes. Every website we build works on phones, tablets and desktops."
+          },
+          {
+            "q": "Can you add online payments or booking?",
+            "a": "Yes. We can add forms, booking and payment options based on what you need."
+          },
+          {
+            "q": "Do you help after the site goes live?",
+            "a": "Yes. We keep supporting and improving your site after launch."
+          }
+        ]
+      }
+    },
+    {
+      "id": "web-design",
+      "title": "Web Design",
+      "text": "Modern page layouts that lead visitors to call, book or buy.",
+      "points": [
+        "Layouts for phones, tablets and desktops",
+        "Clear calls to action",
+        "Concepts you review before we build"
+      ],
+      "image": "/images/service-web-design.svg",
+      "detail": {
+        "headline": "Designs that turn visitors into customers",
+        "intro": "A good website does more than look nice. We design layouts that guide visitors to call, book or buy. Every page is planned around your customers and shown to you as a concept before development begins.",
+        "benefits": [
+          {
+            "title": "Clear journeys",
+            "text": "Visitors always know what to do next."
+          },
+          {
+            "title": "On-brand look",
+            "text": "Your colours, fonts and photos used with care across every page."
+          },
+          {
+            "title": "Mobile first",
+            "text": "Layouts designed for small screens first, then scaled up."
+          },
+          {
+            "title": "No surprises",
+            "text": "You approve the design before a single line of code is written."
+          }
+        ],
+        "deliverables": [
+          "Page layouts for phone, tablet and desktop",
+          "Clear calls to action",
+          "Homepage and key page designs",
+          "Interactive concept to review",
+          "Icon and image styling",
+          "Design files ready for development"
+        ],
+        "steps": [
+          {
+            "title": "Understand",
+            "text": "We study your goals, audience and what you want visitors to do."
+          },
+          {
+            "title": "Wireframe",
+            "text": "We sketch the structure of each page."
+          },
+          {
+            "title": "Design",
+            "text": "We create the full look and share it for feedback."
+          },
+          {
+            "title": "Hand over",
+            "text": "Approved designs move straight into development."
+          }
+        ],
+        "forWho": [
+          "New websites",
+          "Website redesigns",
+          "Landing pages",
+          "Online stores",
+          "Service businesses",
+          "Portfolios"
+        ],
+        "faqs": [
+          {
+            "q": "Can I see the design before it is built?",
+            "a": "Yes. You review concepts and share feedback before we move to development."
+          },
+          {
+            "q": "Do you redesign existing websites?",
+            "a": "Yes. Share your current site and what you want to improve."
+          },
+          {
+            "q": "Is design included if I choose web development?",
+            "a": "We can combine both. Tell us in the quote form and we will plan them together."
+          }
+        ]
+      }
+    },
+    {
+      "id": "digital-marketing",
+      "title": "Digital Marketing",
+      "text": "Social media, SEO and ads that bring the right customers to you.",
+      "points": [
+        "Social media plans and posting",
+        "SEO and Google visibility",
+        "Paid ads with regular reports"
+      ],
+      "image": "/images/service-digital-marketing.svg",
+      "detail": {
+        "headline": "Reach the right customers and keep them coming",
+        "intro": "We help people find you and choose you. From social media planning and SEO to paid ads, we run focused campaigns, share clear reports and keep improving what works.",
+        "benefits": [
+          {
+            "title": "Right audience",
+            "text": "Campaigns aimed at the people most likely to need what you offer."
+          },
+          {
+            "title": "Consistent presence",
+            "text": "Regular posting that keeps your brand visible and active."
+          },
+          {
+            "title": "Found on Google",
+            "text": "SEO that helps nearby customers discover you in search."
+          },
+          {
+            "title": "Clear reports",
+            "text": "Simple updates on what is working and what we will change."
+          }
+        ],
+        "deliverables": [
+          "Social media content plan",
+          "Post design and scheduling",
+          "SEO and Google visibility work",
+          "Paid ad campaigns",
+          "Regular performance reports",
+          "Advice on what to improve next"
+        ],
+        "steps": [
+          {
+            "title": "Goals",
+            "text": "We set clear targets, such as calls, sales or followers."
+          },
+          {
+            "title": "Plan",
+            "text": "We choose channels, content and budget that fit those goals."
+          },
+          {
+            "title": "Run",
+            "text": "We publish, optimise and manage your campaigns."
+          },
+          {
+            "title": "Report",
+            "text": "We share results and adjust the plan every cycle."
+          }
+        ],
+        "forWho": [
+          "Local shops",
+          "Jewellery",
+          "Food & beverages",
+          "Coaching & education",
+          "Clinics",
+          "Startups"
+        ],
+        "faqs": [
+          {
+            "q": "Do you manage social media posting?",
+            "a": "Yes. We plan the content, design the posts and handle posting."
+          },
+          {
+            "q": "Can I choose only SEO or only ads?",
+            "a": "Yes. Pick one service or combine several, based on your goals and budget."
+          },
+          {
+            "q": "Will I see results?",
+            "a": "We share regular reports on what is working and keep improving the campaign."
+          }
+        ]
+      }
+    },
+    {
+      "id": "photography",
+      "title": "Photography",
+      "text": "Product and brand photos that show your work at its best.",
+      "points": [
+        "Product and catalogue shoots",
+        "Brand and team portraits",
+        "Edited, web-ready photos"
+      ],
+      "image": "/images/service-photography.svg",
+      "detail": {
+        "headline": "Photos that make your work look its best",
+        "intro": "Strong photos make people stop scrolling and start trusting you. We shoot products, spaces and people with good light and clean styling, then edit everything so it is ready for your website, social media and print.",
+        "benefits": [
+          {
+            "title": "Look professional",
+            "text": "Sharp, well-lit images that show quality at a glance."
+          },
+          {
+            "title": "Sell more",
+            "text": "Clear product photos help customers decide faster."
+          },
+          {
+            "title": "Match your brand",
+            "text": "Styling and editing that suit your colours and tone."
+          },
+          {
+            "title": "Use everywhere",
+            "text": "Web-ready files sized for your site, social and print."
+          }
+        ],
+        "deliverables": [
+          "Product and catalogue photography",
+          "Brand and team portraits",
+          "Shop and workspace shots",
+          "Colour correction and editing",
+          "Web-ready image sizes",
+          "Images for social media and print"
+        ],
+        "steps": [
+          {
+            "title": "Brief",
+            "text": "We agree what to shoot, the style and where the photos will be used."
+          },
+          {
+            "title": "Shoot",
+            "text": "We photograph your products, space or team."
+          },
+          {
+            "title": "Edit",
+            "text": "We select the best shots and polish them."
+          },
+          {
+            "title": "Deliver",
+            "text": "You receive the final photos, ready to use."
+          }
+        ],
+        "forWho": [
+          "Product catalogues",
+          "Jewellery",
+          "Food & menus",
+          "Shops & showrooms",
+          "Team portraits",
+          "Online stores"
+        ],
+        "faqs": [
+          {
+            "q": "Do you edit the photos?",
+            "a": "Yes. Every delivered photo is edited and web-ready."
+          },
+          {
+            "q": "Can you shoot at my shop or office?",
+            "a": "Yes. Tell us the location and what you want photographed in the quote form."
+          },
+          {
+            "q": "Can the photos be used for my website and posts?",
+            "a": "Yes. We prepare sizes that work for your website, social media and print."
+          }
+        ]
+      }
+    },
+    {
+      "id": "graphic-design",
+      "title": "Graphic Design",
+      "text": "Posters, social posts, brochures and packaging with one consistent style.",
+      "points": [
+        "Posters, flyers and brochures",
+        "Social media posts",
+        "Packaging and labels"
+      ],
+      "image": "/images/service-graphic-design.svg",
+      "detail": {
+        "headline": "Designs that look sharp on every surface",
+        "intro": "From posters and flyers to social posts, brochures and packaging, we create designs that share one consistent style. Your marketing looks like it all comes from the same confident business.",
+        "benefits": [
+          {
+            "title": "One consistent style",
+            "text": "Every piece matches your brand, so people recognise you instantly."
+          },
+          {
+            "title": "Made to be seen",
+            "text": "Bold layouts and clear messages that catch attention."
+          },
+          {
+            "title": "Print and digital",
+            "text": "Files prepared properly for printing presses and screens."
+          },
+          {
+            "title": "Fast turnaround",
+            "text": "A repeatable style makes new designs quicker to produce."
+          }
+        ],
+        "deliverables": [
+          "Posters, flyers and banners",
+          "Social media posts and stories",
+          "Brochures and catalogues",
+          "Packaging and labels",
+          "Invitations and event material",
+          "Print-ready and web-ready files"
+        ],
+        "steps": [
+          {
+            "title": "Brief",
+            "text": "You share the message, audience and where it will be used."
+          },
+          {
+            "title": "Draft",
+            "text": "We design a first version for your review."
+          },
+          {
+            "title": "Revise",
+            "text": "We update it from your feedback."
+          },
+          {
+            "title": "Deliver",
+            "text": "You receive final files for print and online."
+          }
+        ],
+        "forWho": [
+          "Shops & offers",
+          "Events",
+          "Food packaging",
+          "Brochures",
+          "Social media",
+          "Festive campaigns"
+        ],
+        "faqs": [
+          {
+            "q": "Can you design packaging and labels?",
+            "a": "Yes. We create packaging and label artwork that matches your brand."
+          },
+          {
+            "q": "Will the files be ready to print?",
+            "a": "Yes. We deliver print-ready files as well as web versions."
+          },
+          {
+            "q": "Can you match my existing brand?",
+            "a": "Yes. Share your logo and colours and we keep everything consistent."
+          }
+        ]
+      }
+    }
+  ],
+  "checklist": [
+    "Brand, website, photos and campaigns from one team",
+    "We plan first, then work to your budget",
+    "Every website works on phones, tablets and desktops",
+    "Clear steps from brief to launch and growth"
+  ],
+  "stats": [
+    {
+      "value": "6",
+      "label": "Services under one roof"
+    },
+    {
+      "value": "6",
+      "label": "Simple steps from brief to growth"
+    },
+    {
+      "value": "1",
+      "label": "Team for your whole brand"
+    },
+    {
+      "value": "100%",
+      "label": "Mobile-friendly websites"
+    }
+  ],
+  "why": [
+    {
+      "n": "01",
+      "title": "One team",
+      "text": "Design, development, photography and marketing work together, so nothing looks mismatched."
+    },
+    {
+      "n": "02",
+      "title": "Plan first",
+      "text": "We share a plan, timeline and quote before we start, so you know what to expect."
+    },
+    {
+      "n": "03",
+      "title": "Your budget",
+      "text": "Pick one service or combine several. We make it to the budget you set."
+    },
+    {
+      "n": "04",
+      "title": "Mobile-friendly",
+      "text": "Fast, secure websites that work on phones, tablets and desktops."
+    }
+  ],
+  "process": [
+    {
+      "title": "Brief",
+      "text": "You tell us your goals, audience and budget."
+    },
+    {
+      "title": "Plan",
+      "text": "We share a plan, timeline and quote."
+    },
+    {
+      "title": "Design",
+      "text": "We send concepts for you to review."
+    },
+    {
+      "title": "Refine",
+      "text": "We update the work from your feedback."
+    },
+    {
+      "title": "Launch",
+      "text": "We publish the site, campaign or final files."
+    },
+    {
+      "title": "Grow",
+      "text": "We track results and keep improving."
+    }
+  ],
+  "workFilters": [
+    {
+      "key": "all",
+      "label": "All"
+    },
+    {
+      "key": "brand",
+      "label": "Brand"
+    },
+    {
+      "key": "web",
+      "label": "Web"
+    },
+    {
+      "key": "mkt",
+      "label": "Marketing"
+    },
+    {
+      "key": "photo",
+      "label": "Photo"
+    }
+  ],
+  "work": [
+    {
+      "id": "t1",
+      "category": "brand",
+      "kind": "Brand Design",
+      "title": "Logo & identity"
+    },
+    {
+      "id": "t2",
+      "category": "web",
+      "kind": "Web Development",
+      "title": "Business website"
+    },
+    {
+      "id": "t3",
+      "category": "mkt",
+      "kind": "Digital Marketing",
+      "title": "Social campaign"
+    },
+    {
+      "id": "t4",
+      "category": "photo",
+      "kind": "Photography",
+      "title": "Product shoot"
+    },
+    {
+      "id": "t5",
+      "category": "web",
+      "kind": "Web Design",
+      "title": "Landing page"
+    },
+    {
+      "id": "t6",
+      "category": "brand",
+      "kind": "Graphic Design",
+      "title": "Posters & packaging"
+    }
+  ],
+  "faq": [
+    {
+      "q": "How do I get a quote?",
+      "a": "Fill in the form below with your service and project details. We reply with a quote."
+    },
+    {
+      "q": "Can I choose only one service?",
+      "a": "Yes. Pick one service or combine several."
+    },
+    {
+      "q": "Do you build mobile-friendly websites?",
+      "a": "Yes. Every website works on phones, tablets and desktops."
+    },
+    {
+      "q": "What do you need from me to start?",
+      "a": "Your goals, audience and budget. Share them in the form and we send a plan, timeline and quote."
+    },
+    {
+      "q": "Can I review the work before it goes live?",
+      "a": "Yes. We send concepts, update them from your feedback, and publish only when you are happy."
+    },
+    {
+      "q": "Do you help after launch?",
+      "a": "Yes. We track results and keep improving your site or campaign."
+    },
+    {
+      "q": "Where is REDFOX based?",
+      "a": "We are in Rajendra Nagar, Patna, Bihar. You can visit us, call us, or send your brief online through the quote form."
+    },
+    {
+      "q": "Can you redesign my existing logo or website?",
+      "a": "Yes. Share what you have today and what you want to change. We suggest whether a refresh or a fresh start fits your budget better."
+    },
+    {
+      "q": "Do you handle social media posts and ads?",
+      "a": "Yes. We plan the content, design the posts, and run social media, SEO and ad campaigns that fit your goals."
+    },
+    {
+      "q": "Can you shoot product photos for my business?",
+      "a": "Yes. We shoot product and brand photos, then edit them so they match your website, posts and print material."
+    },
+    {
+      "q": "Do you work with small and new businesses?",
+      "a": "Yes. Many businesses start with one service, such as a logo or a simple website, and add more when they are ready."
+    },
+    {
+      "q": "Can I get printed material like cards and brochures?",
+      "a": "Yes. We design business cards, posters, brochures and packaging artwork that match your brand."
+    }
+  ],
+  "images": {
+    "aboutHero": {
+      "src": "/images/about-hero.svg",
+      "alt": "The REDFOX studio desk with a laptop, lamp and plant"
+    },
+    "aboutStory": {
+      "src": "/images/about-story.svg",
+      "alt": "A brand moodboard with photos, colour swatches and the REDFOX R mark"
+    },
+    "process": {
+      "src": "/images/process.svg",
+      "alt": "Six steps from brief to growth"
+    },
+    "contact": {
+      "src": "/images/contact.svg",
+      "alt": "An email, a chat bubble and a phone"
+    }
+  },
+  "about": {
+    "title": "One team for your whole brand",
+    "lead": "REDFOX is an advertising and marketing studio. We design the brand, build the website, shoot the photos and run the campaigns, so everything looks and sounds like one business.",
+    "story": [
+      "A business should not need five different agencies to look good and get found. That one idea is how REDFOX works.",
+      "Our designers, developers, photographers and marketers sit in one team, so your logo, website, photos and campaigns match from the first draft.",
+      "Every project starts with a plan, a timeline and a quote. You see concepts before anything goes live, and we keep improving the work after launch."
+    ],
+    "quote": "Plan first. Then make it to your budget.",
+    "team": [
+      {
+        "role": "Strategy",
+        "text": "We start with your goals, audience and budget, then share a clear plan, timeline and quote.",
+        "image": "/images/team-strategy.svg"
+      },
+      {
+        "role": "Design",
+        "text": "Logos, layouts and graphics that look like one brand wherever people see you.",
+        "image": "/images/team-design.svg"
+      },
+      {
+        "role": "Development",
+        "text": "Fast, secure websites that work on phones, tablets and desktops.",
+        "image": "/images/team-development.svg"
+      },
+      {
+        "role": "Photography",
+        "text": "Product and brand photos that show your work at its best.",
+        "image": "/images/team-photography.svg"
+      },
+      {
+        "role": "Marketing",
+        "text": "Social media, SEO and ads that bring the right customers to you.",
+        "image": "/images/team-marketing.svg"
+      }
+    ]
+  },
+  "extra": {
+    "mission": {
+      "tag": "Mission & vision",
+      "title": "What drives us",
+      "items": [
+        {
+          "title": "Our mission",
+          "text": "Help every business look professional and get found, without juggling five different agencies."
+        },
+        {
+          "title": "Our vision",
+          "text": "To be the first name local businesses think of when they want a brand that stands out."
+        },
+        {
+          "title": "Our promise",
+          "text": "Clear plans, honest quotes and work you approve before it goes live."
+        }
+      ]
+    },
+    "values": {
+      "tag": "Our values",
+      "title": "How we work with you",
+      "items": [
+        {
+          "title": "Clarity",
+          "text": "Plain language, clear timelines and a quote you understand before we start."
+        },
+        {
+          "title": "Craft",
+          "text": "We care about details, from spacing in a logo to loading speed on a phone."
+        },
+        {
+          "title": "Consistency",
+          "text": "Your logo, website, photos and posts look like they belong together."
+        },
+        {
+          "title": "Care",
+          "text": "We listen first, take feedback well and stay with you after launch."
+        }
+      ]
+    },
+    "industries": {
+      "tag": "Who we help",
+      "title": "Businesses of every size and type",
+      "lead": "If you sell something or offer a service, we can help people notice you and trust you.",
+      "items": [
+        "Retail & shops",
+        "Jewellery",
+        "Food & beverages",
+        "Manufacturing",
+        "Education & coaching",
+        "Real estate",
+        "Healthcare & clinics",
+        "Hotels & events",
+        "Startups",
+        "Local services"
+      ]
+    },
+    "included": {
+      "tag": "Included",
+      "title": "What you get with every project",
+      "items": [
+        {
+          "title": "A written plan",
+          "text": "Goals, scope, timeline and quote shared before work begins."
+        },
+        {
+          "title": "Concepts to review",
+          "text": "You see ideas first and tell us what to change."
+        },
+        {
+          "title": "Revisions from feedback",
+          "text": "We update the work until it fits what you had in mind."
+        },
+        {
+          "title": "Ready-to-use files",
+          "text": "Final files for web, social media and print, handed over cleanly."
+        },
+        {
+          "title": "One point of contact",
+          "text": "You talk to one team, not five different vendors."
+        },
+        {
+          "title": "Support after launch",
+          "text": "We track results and keep improving your site or campaign."
+        }
+      ]
+    },
+    "approach": {
+      "tag": "Our approach",
+      "title": "How we make work that stands out",
+      "items": [
+        {
+          "title": "Research",
+          "text": "We learn about your business, customers and competitors before we design anything."
+        },
+        {
+          "title": "Concept",
+          "text": "We turn what we learn into one clear idea that is easy to remember."
+        },
+        {
+          "title": "Craft",
+          "text": "We design, build and shoot with care, then test it on real screens."
+        },
+        {
+          "title": "Improve",
+          "text": "We look at results and keep refining so the work keeps earning its place."
+        }
+      ]
+    },
+    "needFromYou": {
+      "tag": "Before we start",
+      "title": "What we need from you",
+      "lead": "Share what you can. We help with the rest.",
+      "items": [
+        "Your business name and what you sell or offer",
+        "Who your customers are",
+        "Your goals, such as more calls, sales or followers",
+        "Your budget range and preferred timeline",
+        "Any logo, photos or examples you already like"
+      ]
+    },
+    "afterSend": {
+      "tag": "What happens next",
+      "title": "After you send your request",
+      "items": [
+        {
+          "title": "We read your brief",
+          "text": "Our team goes through your details and goals."
+        },
+        {
+          "title": "We reply with a plan",
+          "text": "You get a plan, a timeline and a quote."
+        },
+        {
+          "title": "We start when you say go",
+          "text": "Once you approve, we begin and share concepts for your feedback."
+        }
+      ]
+    }
+  }
+}

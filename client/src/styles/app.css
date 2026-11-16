@@ -1,0 +1,16 @@
+/* Small additions needed by the React/Node version (form feedback + loading/error screen).
+   The visual design itself lives in global.css, copied unchanged from the original page. */
+.form-status{padding:12px 16px;border:1px solid var(--line);background:#fff;font-weight:500;font-size:15px;line-height:1.5}
+.form-status.ok{border-left:4px solid #2a8a4a}
+.form-status.err{border-left:4px solid var(--red)}
+.field-error{display:block;margin-top:6px;color:var(--red);font-size:14px;font-weight:500}
+form button[disabled]{opacity:.65;cursor:wait}
+.app-state{min-height:100vh;display:grid;place-content:center;gap:18px;text-align:center;padding:24px}
+.app-state p{color:var(--mut);max-width:42ch;margin:0 auto}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* Work tiles with an uploaded photo */
+.tile.has-img{background-size:cover;background-position:center}
+.tile.has-img::before{inset:0;width:auto;height:auto;border-radius:0;opacity:1;border:0;background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,0) 62%)}
+.tile.has-img::after{display:none}
+.tile.has-img h3,.tile.has-img small{color:#fff !important}
