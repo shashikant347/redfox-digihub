@@ -1,13 +1,10 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import useSpotlight from '../hooks/useSpotlight.js';
-import useCubeParallax from '../hooks/useCubeParallax.js';
 
 export default function Hero({ p }) {
   const ref = useRef(null);
-  const cubeRef = useRef(null);
   useSpotlight(ref);
-  useCubeParallax(ref, cubeRef);
 
   return (
     <div className="hc" id="hc" ref={ref}>
@@ -40,17 +37,29 @@ export default function Hero({ p }) {
             <Link className="btn ghost" to="/services">{p.btnSecondary}</Link>
           </div>
         </div>
-        <div className="cubewrap" ref={cubeRef} aria-hidden="true">
-          <div className="ring" />
-          <div className="ring r2" />
-          <div className="cube">
-            <div>Brand Design</div>
-            <div>Web Development</div>
-            <div>Web Design</div>
-            <div>Digital Marketing</div>
-            <div>Photography</div>
-            <div>Graphic Design</div>
+        <div className="hero-visual" aria-hidden="true">
+          <div className="hero-orbit hero-orbit-outer" />
+          <div className="hero-orbit hero-orbit-inner" />
+          <div className="hero-artboard">
+            <div className="hero-artboard-head">
+              <span className="hero-brand-dot" />
+              <span>REDFOX / CREATIVE STUDIO</span>
+              <span>01 — 06</span>
+            </div>
+            <div className="hero-artwork">
+              <span className="hero-artwork-label">BRAND SYSTEMS · 2026</span>
+              <strong>MAKE<br />IT MATTER.</strong>
+              <span className="hero-artwork-mark">R</span>
+            </div>
+            <div className="hero-artboard-foot">
+              <span>IDENTITY</span>
+              <span>WEB</span>
+              <span>GROWTH</span>
+            </div>
           </div>
+          <div className="hero-float hero-float-brand"><span>01</span><b>Brand<br />identity</b></div>
+          <div className="hero-float hero-float-web"><span className="hero-live-dot" /><b>Web experience<small>READY TO LAUNCH</small></b></div>
+          <div className="hero-stamp">DESIGN<br />BUILD<br />GROW</div>
         </div>
       </div>
     </div>
