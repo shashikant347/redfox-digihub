@@ -1,0 +1,128 @@
+REDFOX DIGIHUB
+ADMIN / CLIENT ROLES AND DYNAMIC DATA
+Inspected: 2026-11-18
+
+1. ROLE SUMMARY
+
+ADMIN
+- Admin accounts are stored in MongoDB in the Admin collection.
+- An Admin has email, name, passwordHash, and tokenVersion fields. There is no
+  role field or role-based permission system: every Admin has the same access.
+- There is no public registration screen. An account is created or its password
+  is reset with "npm run create-admin" from the server directory.
+- Admins log in at /admin with email and password. Passwords are bcrypt-hashed.
+- Login creates a seven-day JWT in an HttpOnly, SameSite=Strict cookie. In
+  production the cookie is Secure. Changing a password increments tokenVersion
+  to invalidate existing sessions.
+- Login attempts are rate-limited. Protected admin endpoints require a valid
+  session; login and logout are outside that middleware.
+- There is no Admin user-management screen. Admin account creation/reset is a
+  server-side CLI operation; an Admin can change their own password in Settings.
+
+CLIENT / VISITOR
+- There is no Client model, client login, client session, or client dashboard.
+- "Client" currently means a public visitor/customer using the website.
+- Visitors can read public website content and submit a quote request.
+- Quote requests are validated and rate-limited, saved in MongoDB, and an email
+  notification is attempted. Email delivery is best-effort after the request
+  has been saved.
+- Visitors cannot access Admin APIs or view/manage other visitors' quote data.
+
+2. ADMIN FEATURES AVAILABLE IN THE CURRENT ADMIN UI
+
+Routes are declared in client\src\admin\AdminApp.jsx.
+
+- Dashboard: counts for new/all quotes, services, and work items; latest quotes.
+- Services: list, add, edit, delete, reorder; service card and detail-page
+  content; service image upload.
+- Work: add, edit, delete, reorder; title, category, display label and image.
+- FAQ: add, edit, remove and save questions/answers.
+- Quotes: view requests, filter by status, show details, change status, delete.
+  Status values are new, contacted, won, and closed.
+- Settings: edit studio/contact details and social links; change the current
+  Admin's password.
+
+3. DYNAMIC WEBSITE DATA
+
+Runtime source:
+- MongoDB is the live source of site content. Mongoose models are in
+  server\src\models\index.js.
+- On the first server start, server\data\content.json seeds MongoDB. This is a
+  one-time seed guarded by the "_seeded" Setting; editing the JSON later does
+  not automatically overwrite existing MongoDB data.
+- The public site requests GET /api/content. The server assembles content from
+  Service, WorkItem, and Setting records, caches it in-process, and sends a
+  short public cache header. Admin writes invalidate the server content cache.
+
+Data editable in the current Admin UI:
+- Services: title, slug, short copy, points, image, ordering and detail-page
+  content (headline, intro, benefits, deliverables, steps, audience and FAQs).
+- Work: title, category, label, image and ordering.
+- FAQ question-and-answer list.
+- Brand/contact: studio name, tagline, website, email, phone, WhatsApp URL,
+  address, map URL and social links.
+- Quotes submitted by visitors: contact details, service, project details,
+  creation date, status and internal notes. The current UI does not expose
+  internal notes or the backend CSV-export feature.
+- Admin login credentials; password is changeable in Settings.
+- Service/work images can be uploaded to the server's uploads directory.
+
+Data supported by the backend but not currently exposed as an Admin screen:
+- Page copy under the "pages" Setting: home banner text, page titles/leads,
+  section headings, CTA and inner-page banner text. Defaults are in
+  server\src\services\pageDefaults.js.
+- SEO Setting: site name and title/description for Home, About, Services, Work,
+  Process, FAQ and Contact. Service records also contain seoTitle and
+  seoDescription fields. SEO is applied to page metadata and sitemap output.
+- Other site content Settings: checklist, stats, why, process, about, extra,
+  and images. "extra" includes mission, values, industries, included, approach,
+  needFromYou and afterSend. Page-image keys are aboutHero, aboutStory, process
+  and contact.
+- Work category labels/keys can be changed through a protected backend
+  endpoint, but there is no category editor in the current Admin UI.
+- Quote CSV export and page/SEO/content editing endpoints exist in the backend,
+  but the current Admin frontend has no screens wired to those endpoints.
+
+4. WHAT IS MOSTLY STATIC / CODE-DEFINED
+
+- The route list and the structure/order of sections on each page are defined
+  in React code. Services have dynamic detail routes, but the main site pages
+  are fixed routes.
+- Layout, CSS, colors, icons, animations, form labels/behavior and many bits of
+  explanatory UI text are defined in source code.
+- Some page text has backend storage/default support, but it is not editable
+  from the current Admin UI unless a corresponding screen is added.
+- Images in client\public\images are built-in assets. Admin image upload is
+  available for service/work records; general page-image settings have a
+  backend endpoint but no current Admin editor.
+
+5. IMPORTANT FILES
+
+- server\src\models\index.js
+  MongoDB schemas: Admin, Service, WorkItem, Setting and Quote.
+- server\src\middleware\adminAuth.js
+  Admin cookie/JWT session creation and protected-route middleware.
+- server\src\scripts\createAdmin.js
+  CLI account creation/password reset.
+- server\src\routes\admin.js
+  Admin login, protected CRUD/settings/content/SEO/quote endpoints.
+- server\src\routes\content.js
+  Public content endpoint.
+- server\src\routes\quotes.js
+  Public quote submission endpoint.
+- server\src\services\contentStore.js
+  MongoDB content assembly, caching, cache invalidation and initial seeding.
+- server\src\services\pageDefaults.js
+  Editable page-copy schema, defaults and SEO defaults.
+- server\data\content.json
+  Initial content used to seed an empty database.
+- client\src\admin\AdminApp.jsx
+  Admin UI routes and navigation.
+- client\src\admin\pages\Settings.jsx
+  Current brand/contact/social and password forms.
+- client\src\api\client.js
+  Public API calls for content and quote submission.
+- client\src\App.jsx
+  Public page routes and site-wide content loading.
+
+END OF REPORT

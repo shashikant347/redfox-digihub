@@ -4,6 +4,7 @@ import { getContent } from './api/client.js';
 import useScrollState from './hooks/useScrollState.js';
 import useReveal from './hooks/useReveal.js';
 import useTilt from './hooks/useTilt.js';
+import useSpotlight from './hooks/useSpotlight.js';
 
 import Intro from './components/Intro.jsx';
 import Header from './components/Header.jsx';
@@ -36,6 +37,7 @@ export default function App() {
 
   const ready = !!content;
   const { progress, scrolled, showUp } = useScrollState();
+  useSpotlight();
   useReveal(ready, pathname); // re-run for every page
   useTilt(ready, pathname);
 
@@ -57,6 +59,8 @@ export default function App() {
   return (
     <>
       <Intro name={brand.name} />
+      <div className="spot" aria-hidden="true" />
+      <div className="cursor-ring" aria-hidden="true" />
       <ScrollToTop />
       <Header brand={brand} services={services} scrolled={scrolled} menuOpen={menuOpen} onOpenMenu={() => setMenuOpen(true)} />
       <Drawer services={services} open={menuOpen} onClose={closeMenu} />

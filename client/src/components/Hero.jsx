@@ -1,13 +1,8 @@
-import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import useSpotlight from '../hooks/useSpotlight.js';
 
 export default function Hero({ p }) {
-  const ref = useRef(null);
-  useSpotlight(ref);
-
   return (
-    <div className="hc" id="hc" ref={ref}>
+    <div className="hc" id="hc">
       <div className="badge" aria-hidden="true">
         <svg viewBox="0 0 150 150">
           <circle cx="75" cy="75" r="72" fill="#ffd24a" stroke="#1b1b1b" strokeWidth="3" />
@@ -23,7 +18,6 @@ export default function Hero({ p }) {
       <span className="fl a" />
       <span className="fl b" />
       <span className="fl c" />
-      <div className="spot" />
       <div className="hcin">
         <div>
           <span className="chip">{p.chip}</span>
