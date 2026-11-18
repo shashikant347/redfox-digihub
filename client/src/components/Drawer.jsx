@@ -18,8 +18,12 @@ export default function Drawer({ services, open, onClose }) {
     <>
       <div className="scrim" id="scrim" onClick={onClose} />
       <aside className="drawer" id="drawer" aria-label="Site menu" aria-hidden={!open}>
-        <button className="close" id="close" type="button" onClick={onClose}>Close</button>
-        <h4>Pages</h4>
+        <button className="close close-icon" id="close" type="button" onClick={onClose} aria-label="Close menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" />
+          </svg>
+        </button>
+        <h4>Welcome</h4>
         <Link to="/" onClick={onClose}>Home</Link>
         <Link to="/about" onClick={onClose}>About</Link>
         <Link to="/services" onClick={onClose}>Services</Link>

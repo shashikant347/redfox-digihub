@@ -100,7 +100,7 @@ export default function AboutPage({ content }) {
 
       <InfoCards {...extra.industries} variant="chips" />
       <FindUs brand={brand} />
-      <Marquee words={services.map((s) => s.title)} repeat={4} />
+      <Marquee words={services.map((s) => s.title)} repeat={4} className="mq about-scroll" />
       <CtaBand motto={brand.motto} title="Tell us about your project" />
     </main>
   );

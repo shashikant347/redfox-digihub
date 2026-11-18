@@ -14,7 +14,7 @@ export default function SocialLinks({ social = [], showHandle = false, className
       {social.map((s) => (
         <li key={s.id}>
           <a href={s.url} target="_blank" rel="noopener noreferrer" aria-label={`${s.label} — ${s.handle}`} title={s.label}>
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d={ICONS[s.id]} /></svg>
+            <svg className={`social-icon-${s.id}`} viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d={ICONS[s.id]} /></svg>
             {showHandle && <span><b>{s.label}</b>{s.handle}</span>}
           </a>
         </li>
