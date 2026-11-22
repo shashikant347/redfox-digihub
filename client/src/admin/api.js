@@ -52,4 +52,11 @@ export const api = {
   saveFaq: (items) => request('/faq', { method: 'PUT', body: { items } }),
   getBrand: () => request('/brand'),
   saveBrand: (brand) => request('/brand', { method: 'PUT', body: brand }),
+  saveWorkCategories: (items) => request('/work/categories', { method: 'PUT', body: { items } }),
+  getPages: () => request('/pages'),
+  savePages: (values) => request('/pages', { method: 'PUT', body: { values } }),
+  getSeo: () => request('/seo'),
+  saveSeo: (value) => request('/seo', { method: 'PUT', body: value }),
+  getContent: (section) => request(`/content/${section}`),
+  saveContent: (section, value) => request(`/content/${section}`, { method: 'PUT', body: { value } }),
 };

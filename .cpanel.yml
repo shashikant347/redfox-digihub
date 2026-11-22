@@ -1,0 +1,8 @@
+---
+# cPanel "Git Version Control" -> Deploy HEAD Commit runs these tasks.
+# The repo is cloned straight into /home/dxemqeih/redfox-digihub, so there is nothing to copy:
+# we only tell the Node app (Passenger) to restart so it loads the new code.
+deployment:
+  tasks:
+    - /bin/mkdir -p /home/dxemqeih/redfox-digihub/server/tmp
+    - /bin/touch /home/dxemqeih/redfox-digihub/server/tmp/restart.txt

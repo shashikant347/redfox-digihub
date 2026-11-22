@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api } from '../api.js';
 import { Field, Input, ImageField, StringList, PairList, QAList, Notice } from '../ui.jsx';
+import { Counter } from './Seo.jsx';
 import { assetUrl } from '../../api/config.js';
 
 export function ServiceList() {
@@ -49,7 +50,7 @@ export function ServiceList() {
 }
 
 const BLANK = {
-  title: '', slug: '', text: '', points: [], image: '',
+  title: '', slug: '', text: '', points: [], image: '', seoTitle: '', seoDescription: '',
   detail: { headline: '', intro: '', benefits: [], deliverables: [], steps: [], forWho: [], faqs: [] },
 };
 
@@ -109,6 +110,18 @@ export function ServiceForm() {
         <Field label="Steps"><PairList items={f.detail.steps} onChange={setD('steps')} addLabel="Add step" /></Field>
         <Field label="Who it is for"><StringList items={f.detail.forWho} onChange={setD('forWho')} addLabel="Add item" /></Field>
         <Field label="FAQs"><QAList items={f.detail.faqs} onChange={setD('faqs')} addLabel="Add FAQ" /></Field>
+      </section>
+      <section className="ad-card ad-form">
+        <h2>SEO (Google)</h2>
+        <p className="ad-hint" style={{ margin: 0 }}>Optional. Empty = the service title and short text are used.</p>
+        <Field label="SEO title">
+          <Input value={f.seoTitle} onChange={set('seoTitle')} maxLength={120} placeholder={f.title} />
+          <Counter value={f.seoTitle} max={60} label="characters (about 60 is best)" />
+        </Field>
+        <Field label="SEO description">
+          <Input area rows={3} value={f.seoDescription} onChange={set('seoDescription')} maxLength={300} placeholder={f.text} />
+          <Counter value={f.seoDescription} max={160} label="characters (about 160 is best)" />
+        </Field>
       </section>
       <div className="ad-bar">
         <button className="ad-btn" disabled={busy}>{busy ? 'Saving…' : 'Save'}</button>

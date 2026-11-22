@@ -9,6 +9,9 @@ import WorkAdmin from './pages/Work.jsx';
 import FaqAdmin from './pages/Faq.jsx';
 import QuotesAdmin from './pages/Quotes.jsx';
 import SettingsAdmin from './pages/Settings.jsx';
+import PageText from './pages/PageText.jsx';
+import SiteContent from './pages/SiteContent.jsx';
+import SeoAdmin from './pages/Seo.jsx';
 
 export default function AdminApp() {
   const [admin, setAdmin] = useState(undefined); // undefined = checking, null = logged out
@@ -39,6 +42,9 @@ export default function AdminApp() {
           <NavLink to="/admin/services">Services</NavLink>
           <NavLink to="/admin/work">Work</NavLink>
           <NavLink to="/admin/faq">FAQ</NavLink>
+          <NavLink to="/admin/page-text">Page text</NavLink>
+          <NavLink to="/admin/content">Site content</NavLink>
+          <NavLink to="/admin/seo">SEO</NavLink>
           <NavLink to="/admin/quotes">Quotes</NavLink>
           <NavLink to="/admin/settings">Settings</NavLink>
         </nav>
@@ -56,6 +62,9 @@ export default function AdminApp() {
           <Route path="/admin/services/:id" element={<ServiceForm />} />
           <Route path="/admin/work" element={<WorkAdmin />} />
           <Route path="/admin/faq" element={<FaqAdmin />} />
+          <Route path="/admin/page-text" element={<PageText />} />
+          <Route path="/admin/content" element={<SiteContent />} />
+          <Route path="/admin/seo" element={<SeoAdmin />} />
           <Route path="/admin/quotes" element={<QuotesAdmin />} />
           <Route path="/admin/settings" element={<SettingsAdmin />} />
           <Route path="*" element={<Navigate to="/admin" replace />} />

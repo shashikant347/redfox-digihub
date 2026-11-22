@@ -29,7 +29,12 @@ Production needs `JWT_SECRET` (32+ chars) and HTTPS (login cookie is `Secure`). 
 Login with email + password (bcrypt hash, httpOnly SameSite=Strict cookie, login rate limit).
 - **Services**: add / edit / delete / reorder, image upload, full detail page. Menu, footer and `/services/<slug>` update automatically.
 - **Work**: add / edit / delete / reorder, image upload.
-- **FAQ**, **Quotes** (status: new / contacted / won / closed), **Settings** (phone, email, address, social links, password).
+- **Work categories**: "Edit categories" on the Work page (add / rename / reorder the filter buttons).
+- **FAQ**, **Settings** (phone, email, address, social links, password).
+- **Quotes**: search, status filter, pages of 25, internal notes, **Export CSV** (opens in Excel / Google Sheets).
+- **Page text**: headings and short texts of every page (empty box = default text).
+- **Site content**: numbers, why-us, process steps, checklist, About page (story, quote, team), info sections, page pictures.
+- **SEO**: Google title and description for every page, plus an SEO box inside each service. `/sitemap.xml` and `/robots.txt` are generated automatically.
 Uploaded images are saved in `server/uploads/` (JPG, PNG, WebP, GIF, max 5 MB).
 
 ## API

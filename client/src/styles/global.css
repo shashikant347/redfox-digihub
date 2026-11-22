@@ -402,7 +402,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--red);outline:3px soli
 /* ===== refined REDFOX studio direction ===== */
 :root{
   --ink:#20221f;--mut:#686963;--line:#e6e1d8;--card:#fffdf9;
-  --red:#d9472f;--red2:#ba3825;--orange:#d9472f;--green:#d9472f;
+  --red:#e80000;--red2:#c50000;--orange:#e80000;--green:#e80000;
   --green2:#ba3825;--violet:#252a26;--lav:#eee8df;--pink:#f1dfd7;
   --sky:#e3e9e3;--sun:#edc8ba;--mint:#e6eadf;--teal:#cad9d0;
   --lav2:#f8f5f0;--sky2:#f8f5f0;--sun2:#f8f5f0;--mint2:#f8f5f0;
@@ -427,7 +427,7 @@ header.sh{box-shadow:0 10px 28px rgba(32,34,31,.07)}
 .tabs>a.act,.dd>a.act{background:var(--red);color:#fff}
 .tabs>a:hover,.dd:hover>a,.dd:focus-within>a,.tabs>a:focus-visible,.dd>a:focus-visible{background:var(--red);color:#fff;transform:translateY(-2px);box-shadow:0 8px 18px rgba(217,71,47,.18)}
 .right .btn{padding:12px 20px}
-.right .btn{background:#f1f1f1;color:var(--ink);transition:background .2s,color .2s,transform .2s,box-shadow .2s}
+.right .btn{background:var(--red);color:#fff;transition:background .2s,color .2s,transform .2s,box-shadow .2s}
 .right .btn:hover{background:var(--red);color:#fff;transform:translateY(-2px);box-shadow:0 8px 18px rgba(217,71,47,.2)}
 .burger{border-radius:50%;background:transparent;transition:background .2s,transform .2s,box-shadow .2s}
 .burger:hover,.burger:focus-visible{background:var(--red);transform:translateY(-2px);box-shadow:0 6px 14px rgba(217,71,47,.2)}

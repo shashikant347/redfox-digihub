@@ -1,6 +1,6 @@
 # REDFOX project: handoff notes (kahan tak hua, kya baaki hai)
 
-> **STATUS: BACKEND TASK COMPLETE (code likha ja chuka hai, run-test baaki).** Sirf admin panel ka frontend (section 3, "CLIENT admin UI") baaki hai.
+> **STATUS: CODE COMPLETE.** Backend + public site + admin UI (Page text, Site content, SEO, work categories, quotes search/CSV/notes, service SEO) sab bana hai. Admin screens ko mock API ke saath jsdom me test kiya gaya (6 tests pass). **Baaki: real MongoDB ke saath run-test (section 4).**
 
 Ye file kisi bhi dusre AI/developer ko dene ke liye hai taaki wo kaam wahin se aage badha sake.
 Project: `redfox-digihub/` (React + Vite client, Node/Express server, **MongoDB**). User ki bhasha: Hinglish.
@@ -47,7 +47,7 @@ User ne ye 3 chuni: (A) baaki site content edit, (B) work categories + har page 
 - Home/Hero/Work/Why/Band/CtaBand, Services/Work/Process/FAQ/Contact/About pages ab `content.pages.*` se text lete hain.
 - JSX syntax check tsc se ho chuka.
 
-### CLIENT admin UI: **BAAKI (yahin ruka hai)**
+### CLIENT admin UI: **DONE** (neeche ki list purani hai, ab ye sab bana hua hai)
 1. `client/src/admin/api.js` me add karo: `getPages/savePages`, `getSeo/saveSeo`, `getContent(section)/saveContent(section,value)`, `saveWorkCategories(items)`, quotes list me query string + page, `patch('quotes',id,{notes})`.
 2. Naye pages (`client/src/admin/pages/`):
    - `PageText.jsx`: `GET /pages` ka schema generic render kare (group -> fields; placeholder = `def`; textarea jab `area`), Save.

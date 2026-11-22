@@ -1,9 +1,48 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api.js';
-import { Field, Input, ImageField, Notice } from '../ui.jsx';
+import { Field, Input, ImageField, ListEditor, Notice } from '../ui.jsx';
 import { assetUrl } from '../../api/config.js';
 
 const BLANK = { title: '', category: '', kind: '', image: '' };
+
+/** Add / rename / reorder the filter buttons of the Work page. */
+function Categories({ cats, onSaved }) {
+  const [openPanel, setOpenPanel] = useState(false);
+  const [list, setList] = useState(cats);
+  const [msg, setMsg] = useState(null);
+  const [busy, setBusy] = useState(false);
+  useEffect(() => { setList(cats); }, [cats]);
+
+  async function save() {
+    setBusy(true);
+    try {
+      await api.saveWorkCategories(list);
+      setMsg({ type: 'ok', text: 'Categories saved.' });
+      onSaved();
+    } catch (e) { setMsg({ type: 'error', text: e.message }); }
+    finally { setBusy(false); }
+  }
+
+  if (!openPanel) return <p><button type="button" className="ad-btn ghost sm" onClick={() => setOpenPanel(true)}>Edit categories</button></p>;
+  return (
+    <section className="ad-card ad-form">
+      <h2>Categories</h2>
+      <p className="ad-hint" style={{ margin: 0 }}>These are the filter buttons on the Work page. A category that still has work items cannot be removed: move or delete those items first.</p>
+      <Notice notice={msg} />
+      <ListEditor
+        items={list}
+        onChange={setList}
+        blank={() => ({ key: '', label: '' })}
+        addLabel="Add category"
+        render={(c, set) => <Input value={c.label} onChange={(t) => set({ ...c, label: t })} placeholder="Category name, e.g. Video" maxLength={30} />}
+      />
+      <div className="ad-bar">
+        <button type="button" className="ad-btn" onClick={save} disabled={busy}>{busy ? 'Saving…' : 'Save categories'}</button>
+        <button type="button" className="ad-btn ghost" onClick={() => setOpenPanel(false)}>Close</button>
+      </div>
+    </section>
+  );
+}
 
 export default function WorkAdmin() {
   const [items, setItems] = useState(null);
@@ -41,6 +80,7 @@ export default function WorkAdmin() {
     <>
       <div className="ad-head"><h1>Work</h1>{!f && <button type="button" className="ad-btn" onClick={() => open(null)}>+ Add work</button>}</div>
       <Notice notice={notice} />
+      <Categories cats={cats} onSaved={load} />
       {f && (
         <form className="ad-card ad-form" onSubmit={save}>
           <h2>{editId ? 'Edit work' : 'Add work'}</h2>
