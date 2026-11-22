@@ -3,7 +3,7 @@
 > **STATUS: CODE COMPLETE.** Backend + public site + admin UI (Page text, Site content, SEO, work categories, quotes search/CSV/notes, service SEO) sab bana hai. Admin screens ko mock API ke saath jsdom me test kiya gaya (6 tests pass). **Baaki: real MongoDB ke saath run-test (section 4).**
 
 Ye file kisi bhi dusre AI/developer ko dene ke liye hai taaki wo kaam wahin se aage badha sake.
-Project: `redfox-digihub/` (React + Vite client, Node/Express server, **MongoDB**). User ki bhasha: Hinglish.
+Project: `redfox-digihub/` (React + Vite client, Node/Express server, **MySQL (mysql2)**). User ki bhasha: Hinglish.
 
 ## 1. Kya pehle se tha (v13 zip)
 - React site (Home, About, Services, Service detail, Work, Process, FAQ, Contact).
@@ -11,8 +11,8 @@ Project: `redfox-digihub/` (React + Vite client, Node/Express server, **MongoDB*
 - Admin/DB nahi tha.
 
 ## 2. Phase 1: DONE (v14 zip me bhi hai)
-- MongoDB (mongoose). Models: `server/src/models/index.js` (Admin, Service, WorkItem, Setting, Quote).
-- Pehli baar server start par `content.json` MongoDB me seed hota hai (`seedIfEmpty` in `services/contentStore.js`).
+- MySQL (mysql2). Tables auto-create on start (`server/src/db.js`). Data access: `server/src/models/index.js` (Admin, Service, WorkItem, Setting, Quote).
+- Pehli baar server start par `content.json` MySQL me seed hota hai (`seedIfEmpty` in `services/contentStore.js`).
   `GET /api/content` ka JSON shape same rakha gaya hai (frontend ko tootne se bachane ke liye).
 - Admin login: email+password (bcryptjs), JWT httpOnly SameSite=Strict cookie `rf_admin`, login rate limit.
   `npm run create-admin --prefix server` se admin banta hai. Code: `middleware/adminAuth.js`, `routes/admin.js`.

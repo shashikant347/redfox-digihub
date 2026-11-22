@@ -97,7 +97,7 @@ try {
   await seedIfEmpty();
 } catch (err) {
   console.error('Could not start: ' + err.message);
-  console.error('Is MongoDB running, and is MONGODB_URI in server/.env correct?');
+  console.error('Check DB_HOST, DB_NAME, DB_USER and DB_PASSWORD in server/.env (and that the MySQL user is added to the database in cPanel).');
   process.exit(1);
 }
 

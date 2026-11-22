@@ -5,7 +5,7 @@ Inspected: 2026-11-18
 1. ROLE SUMMARY
 
 ADMIN
-- Admin accounts are stored in MongoDB in the Admin collection.
+- Admin accounts are stored in MySQL in the admins table.
 - An Admin has email, name, passwordHash, and tokenVersion fields. There is no
   role field or role-based permission system: every Admin has the same access.
 - There is no public registration screen. An account is created or its password
@@ -23,7 +23,7 @@ CLIENT / VISITOR
 - There is no Client model, client login, client session, or client dashboard.
 - "Client" currently means a public visitor/customer using the website.
 - Visitors can read public website content and submit a quote request.
-- Quote requests are validated and rate-limited, saved in MongoDB, and an email
+- Quote requests are validated and rate-limited, saved in MySQL, and an email
   notification is attempted. Email delivery is best-effort after the request
   has been saved.
 - Visitors cannot access Admin APIs or view/manage other visitors' quote data.
@@ -45,11 +45,11 @@ Routes are declared in client\src\admin\AdminApp.jsx.
 3. DYNAMIC WEBSITE DATA
 
 Runtime source:
-- MongoDB is the live source of site content. Mongoose models are in
+- MySQL is the live source of site content. Data access (mysql2) is in
   server\src\models\index.js.
-- On the first server start, server\data\content.json seeds MongoDB. This is a
+- On the first server start, server\data\content.json seeds MySQL. This is a
   one-time seed guarded by the "_seeded" Setting; editing the JSON later does
-  not automatically overwrite existing MongoDB data.
+  not automatically overwrite existing MySQL data.
 - The public site requests GET /api/content. The server assembles content from
   Service, WorkItem, and Setting records, caches it in-process, and sends a
   short public cache header. Admin writes invalidate the server content cache.
@@ -99,7 +99,7 @@ Data supported by the backend but not currently exposed as an Admin screen:
 5. IMPORTANT FILES
 
 - server\src\models\index.js
-  MongoDB schemas: Admin, Service, WorkItem, Setting and Quote.
+  MySQL schemas: Admin, Service, WorkItem, Setting and Quote.
 - server\src\middleware\adminAuth.js
   Admin cookie/JWT session creation and protected-route middleware.
 - server\src\scripts\createAdmin.js
@@ -111,7 +111,7 @@ Data supported by the backend but not currently exposed as an Admin screen:
 - server\src\routes\quotes.js
   Public quote submission endpoint.
 - server\src\services\contentStore.js
-  MongoDB content assembly, caching, cache invalidation and initial seeding.
+  MySQL content assembly, caching, cache invalidation and initial seeding.
 - server\src\services\pageDefaults.js
   Editable page-copy schema, defaults and SEO defaults.
 - server\data\content.json

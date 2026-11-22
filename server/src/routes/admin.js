@@ -33,7 +33,7 @@ const slugify = (t, fallback = 'service') =>
 
 async function uniqueSlug(base, exceptId) {
   let slug = base;
-  for (let n = 2; await Service.exists({ slug, ...(exceptId && { _id: { $ne: exceptId } }) }); n++) slug = `${base}-${n}`;
+  for (let n = 2; await Service.slugExists(slug, exceptId); n++) slug = `${base}-${n}`;
   return slug;
 }
 
@@ -63,13 +63,13 @@ const uploadsIn = (v, set = new Set()) => {
   return set;
 };
 async function saveSetting(key, value) {
-  const old = (await Setting.findOne({ key }).lean())?.value;
-  await Setting.updateOne({ key }, { $set: { value } }, { upsert: true });
+  const old = await Setting.get(key);
+  await Setting.set(key, value);
   const keep = uploadsIn(value);
   uploadsIn(old).forEach((u) => !keep.has(u) && removeUpload(u));
   invalidateContent();
 }
-const getSetting = async (key, fallback) => (await Setting.findOne({ key }).lean())?.value ?? fallback;
+const getSetting = async (key, fallback) => (await Setting.get(key)) ?? fallback;
 
 // ---------- auth (public) ----------
 const loginLimiter = rateLimit({
@@ -88,7 +88,7 @@ router.post(
   wrap(async (req, res) => {
     const email = str(req.body?.email, 200).toLowerCase();
     const password = String(req.body?.password ?? '');
-    const admin = await Admin.findOne({ email });
+    const admin = await Admin.findByEmail(email);
     const ok = await bcrypt.compare(password, admin ? admin.passwordHash : DUMMY_HASH);
     if (!admin || !ok) return fail(res, 401, 'Wrong email or password.');
     setSession(res, admin);
@@ -113,10 +113,8 @@ router.post(
     const next = String(req.body?.next ?? '');
     if (!(await bcrypt.compare(current, req.admin.passwordHash))) return fail(res, 400, 'Current password is wrong.');
     if (next.length < 10) return fail(res, 400, 'New password must be at least 10 characters.');
-    req.admin.passwordHash = await bcrypt.hash(next, 12);
-    req.admin.tokenVersion += 1; // logs out every other device
-    await req.admin.save();
-    setSession(res, req.admin);
+    const updated = await Admin.setPassword(req.admin._id, await bcrypt.hash(next, 12)); // also logs out every other device
+    setSession(res, updated);
     res.json({ ok: true });
   })
 );
@@ -125,11 +123,11 @@ router.get(
   '/stats',
   wrap(async (_req, res) => {
     const [services, work, quotesTotal, quotesNew, latest] = await Promise.all([
-      Service.countDocuments(),
-      WorkItem.countDocuments(),
-      Quote.countDocuments(),
-      Quote.countDocuments({ status: 'new' }),
-      Quote.find().sort({ createdAt: -1 }).limit(5).lean(),
+      Service.count(),
+      WorkItem.count(),
+      Quote.count(),
+      Quote.count({ status: 'new' }),
+      Quote.list({}, { limit: 5 }),
     ]);
     res.json({ ok: true, services, work, quotesTotal, quotesNew, latest });
   })
@@ -143,11 +141,11 @@ router.post('/upload', upload.single('image'), (req, res) => {
 
 // ---------- services ----------
 router.get('/services', wrap(async (_req, res) => {
-  res.json({ ok: true, items: await Service.find().sort({ order: 1, createdAt: 1 }).lean() });
+  res.json({ ok: true, items: await Service.list() });
 }));
 
 router.get('/services/:id', wrap(async (req, res) => {
-  const item = await Service.findById(req.params.id).lean().catch(() => null);
+  const item = await Service.get(req.params.id);
   if (!item) return fail(res, 404, 'Service not found.');
   res.json({ ok: true, item });
 }));
@@ -156,26 +154,24 @@ router.post('/services', wrap(async (req, res) => {
   const data = cleanService(req.body || {});
   if (data.title.length < 2) return fail(res, 400, 'Enter a service title.', { title: 'Enter a service title.' });
   const slug = await uniqueSlug(slugify(req.body?.slug || data.title));
-  const last = await Service.findOne().sort({ order: -1 }).lean();
-  const item = await Service.create({ ...data, slug, order: (last?.order ?? -1) + 1 });
+  const item = await Service.create({ ...data, slug, order: (await Service.lastOrder()) + 1 });
   invalidateContent();
   res.status(201).json({ ok: true, item });
 }));
 
 router.put('/services/:id', wrap(async (req, res) => {
-  const item = await Service.findById(req.params.id).catch(() => null);
-  if (!item) return fail(res, 404, 'Service not found.');
+  const current = await Service.get(req.params.id);
+  if (!current) return fail(res, 404, 'Service not found.');
   const data = cleanService(req.body || {});
   if (data.title.length < 2) return fail(res, 400, 'Enter a service title.', { title: 'Enter a service title.' });
-  if (item.image !== data.image) removeUpload(item.image);
-  item.set(data); // the slug stays the same so existing links keep working
-  await item.save();
+  if (current.image !== data.image) removeUpload(current.image);
+  const item = await Service.update(req.params.id, data); // the slug stays the same so existing links keep working
   invalidateContent();
   res.json({ ok: true, item });
 }));
 
 router.delete('/services/:id', wrap(async (req, res) => {
-  const item = await Service.findByIdAndDelete(req.params.id).catch(() => null);
+  const item = await Service.remove(req.params.id);
   if (!item) return fail(res, 404, 'Service not found.');
   removeUpload(item.image);
   invalidateContent();
@@ -184,17 +180,17 @@ router.delete('/services/:id', wrap(async (req, res) => {
 
 const reorder = (Model) => wrap(async (req, res) => {
   const ids = Array.isArray(req.body?.ids) ? req.body.ids.map(String) : [];
-  await Model.bulkWrite(ids.map((id, i) => ({ updateOne: { filter: { _id: id }, update: { $set: { order: i } } } })));
+  await Model.reorder(ids);
   invalidateContent();
   res.json({ ok: true });
 });
 router.post('/services/reorder', reorder(Service));
 
 // ---------- work ----------
-const getFilters = async () => ((await Setting.findOne({ key: 'workFilters' }).lean())?.value || []).filter((f) => f.key !== 'all');
+const getFilters = async () => ((await Setting.get('workFilters')) || []).filter((f) => f.key !== 'all');
 
 router.get('/work', wrap(async (_req, res) => {
-  res.json({ ok: true, items: await WorkItem.find().sort({ order: 1, createdAt: 1 }).lean(), categories: await getFilters() });
+  res.json({ ok: true, items: await WorkItem.list(), categories: await getFilters() });
 }));
 
 router.put('/work/categories', wrap(async (req, res) => {
@@ -218,7 +214,7 @@ router.put('/work/categories', wrap(async (req, res) => {
   if (!out.length) return fail(res, 400, 'Keep at least one category.');
   const removed = old.filter((o) => !used.has(o.key));
   if (removed.length) {
-    const inUse = await WorkItem.countDocuments({ category: { $in: removed.map((r) => r.key) } });
+    const inUse = await WorkItem.countInCategories(removed.map((r) => r.key));
     if (inUse) return fail(res, 400, `Move or delete the ${inUse} work item(s) in ${removed.map((r) => `"${r.label}"`).join(', ')} first.`);
   }
   await saveSetting('workFilters', [{ key: 'all', label: 'All' }, ...out]);
@@ -239,26 +235,24 @@ async function cleanWork(b) {
 router.post('/work', wrap(async (req, res) => {
   const { errors, data } = await cleanWork(req.body || {});
   if (Object.keys(errors).length) return fail(res, 400, 'Please fix the highlighted fields.', errors);
-  const last = await WorkItem.findOne().sort({ order: -1 }).lean();
-  const item = await WorkItem.create({ ...data, order: (last?.order ?? -1) + 1 });
+  const item = await WorkItem.create({ ...data, order: (await WorkItem.lastOrder()) + 1 });
   invalidateContent();
   res.status(201).json({ ok: true, item });
 }));
 
 router.put('/work/:id', wrap(async (req, res) => {
-  const item = await WorkItem.findById(req.params.id).catch(() => null);
-  if (!item) return fail(res, 404, 'Work item not found.');
+  const current = await WorkItem.get(req.params.id);
+  if (!current) return fail(res, 404, 'Work item not found.');
   const { errors, data } = await cleanWork(req.body || {});
   if (Object.keys(errors).length) return fail(res, 400, 'Please fix the highlighted fields.', errors);
-  if (item.image !== data.image) removeUpload(item.image);
-  item.set(data);
-  await item.save();
+  if (current.image !== data.image) removeUpload(current.image);
+  const item = await WorkItem.update(req.params.id, data);
   invalidateContent();
   res.json({ ok: true, item });
 }));
 
 router.delete('/work/:id', wrap(async (req, res) => {
-  const item = await WorkItem.findByIdAndDelete(req.params.id).catch(() => null);
+  const item = await WorkItem.remove(req.params.id);
   if (!item) return fail(res, 404, 'Work item not found.');
   removeUpload(item.image);
   invalidateContent();
@@ -268,22 +262,22 @@ router.post('/work/reorder', reorder(WorkItem));
 
 // ---------- FAQ ----------
 router.get('/faq', wrap(async (_req, res) => {
-  res.json({ ok: true, items: (await Setting.findOne({ key: 'faq' }).lean())?.value || [] });
+  res.json({ ok: true, items: (await Setting.get('faq')) || [] });
 }));
 router.put('/faq', wrap(async (req, res) => {
   const items = qas(req.body?.items);
-  await Setting.updateOne({ key: 'faq' }, { $set: { value: items } }, { upsert: true });
+  await Setting.set('faq', items);
   invalidateContent();
   res.json({ ok: true, items });
 }));
 
 // ---------- brand: phone, email, address, social links ----------
 router.get('/brand', wrap(async (_req, res) => {
-  res.json({ ok: true, brand: (await Setting.findOne({ key: 'brand' }).lean())?.value || {} });
+  res.json({ ok: true, brand: (await Setting.get('brand')) || {} });
 }));
 router.put('/brand', wrap(async (req, res) => {
   const b = req.body || {};
-  const old = (await Setting.findOne({ key: 'brand' }).lean())?.value || {};
+  const old = (await Setting.get('brand')) || {};
   const email = str(b.email, 200);
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail(res, 400, 'Enter a valid email.', { email: 'Enter a valid email.' });
   const phone = str(b.phone, 30);
@@ -310,33 +304,29 @@ router.put('/brand', wrap(async (req, res) => {
     mapUrl: httpUrl(b.mapUrl),
     social,
   };
-  await Setting.updateOne({ key: 'brand' }, { $set: { value: brand } }, { upsert: true });
+  await Setting.set('brand', brand);
   invalidateContent();
   res.json({ ok: true, brand });
 }));
 
 // ---------- quotes (leads) ----------
 const STATUSES = ['new', 'contacted', 'won', 'closed'];
-const escapeRe = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 function quoteFilter(query) {
   const filter = {};
   const status = str(query.status, 20);
   if (STATUSES.includes(status)) filter.status = status;
   const q = str(query.q, 100);
-  if (q) {
-    const re = new RegExp(escapeRe(q), 'i'); // escaped: visitors' text can never act as a pattern
-    filter.$or = ['name', 'contact', 'service', 'details', 'notes'].map((f) => ({ [f]: re }));
-  }
+  if (q) filter.q = q;
   return filter;
 }
 
 router.get('/quotes', wrap(async (req, res) => {
   const filter = quoteFilter(req.query);
   const limit = 25;
-  const total = await Quote.countDocuments(filter);
+  const total = await Quote.count(filter);
   const pages = Math.max(1, Math.ceil(total / limit));
   const page = Math.min(Math.max(parseInt(req.query.page, 10) || 1, 1), pages);
-  const items = await Quote.find(filter).sort({ createdAt: -1 }).skip((page - 1) * limit).limit(limit).lean();
+  const items = await Quote.list(filter, { limit, offset: (page - 1) * limit });
   res.json({ ok: true, items, total, page, pages });
 }));
 
@@ -347,7 +337,7 @@ const csvCell = (v) => {
   return `"${t.replace(/"/g, '""')}"`;
 };
 router.get('/quotes/export.csv', wrap(async (req, res) => {
-  const items = await Quote.find(quoteFilter(req.query)).sort({ createdAt: -1 }).limit(5000).lean();
+  const items = await Quote.list(quoteFilter(req.query), { limit: 5000 });
   const head = ['Date', 'Name', 'Contact', 'Service', 'Status', 'Details', 'Notes'];
   const rows = items.map((q) => [new Date(q.createdAt).toISOString(), q.name, q.contact, q.service, q.status, q.details, q.notes]);
   const csv = '\uFEFF' + [head, ...rows].map((r) => r.map(csvCell).join(',')).join('\r\n');
@@ -365,12 +355,12 @@ router.patch('/quotes/:id', wrap(async (req, res) => {
   }
   if (req.body?.notes !== undefined) update.notes = str(req.body.notes, 2000);
   if (!Object.keys(update).length) return fail(res, 400, 'Nothing to update.');
-  const item = await Quote.findByIdAndUpdate(req.params.id, update, { new: true }).catch(() => null);
+  const item = (await Quote.get(req.params.id)) && (await Quote.update(req.params.id, update));
   if (!item) return fail(res, 404, 'Quote not found.');
   res.json({ ok: true, item });
 }));
 router.delete('/quotes/:id', wrap(async (req, res) => {
-  const item = await Quote.findByIdAndDelete(req.params.id).catch(() => null);
+  const item = await Quote.remove(req.params.id);
   if (!item) return fail(res, 404, 'Quote not found.');
   res.json({ ok: true });
 }));

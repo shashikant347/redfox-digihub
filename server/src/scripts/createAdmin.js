@@ -3,9 +3,8 @@
 // Non-interactive:  ADMIN_EMAIL=you@x.com ADMIN_PASSWORD='long-password' npm run create-admin
 import readline from 'node:readline';
 import bcrypt from 'bcryptjs';
-import mongoose from 'mongoose';
 import '../config.js';
-import { connectDb } from '../db.js';
+import { connectDb, closeDb } from '../db.js';
 import { Admin } from '../models/index.js';
 
 function ask(question, hidden = false) {
@@ -37,11 +36,9 @@ async function main() {
 
   await connectDb();
   const passwordHash = await bcrypt.hash(password, 12);
-  const existing = await Admin.findOne({ email });
+  const existing = await Admin.findByEmail(email);
   if (existing) {
-    existing.passwordHash = passwordHash;
-    existing.tokenVersion += 1;
-    await existing.save();
+    await Admin.setPassword(existing._id, passwordHash);
     console.log(`Password updated for ${email}`);
   } else {
     await Admin.create({ email, passwordHash });
@@ -54,4 +51,4 @@ main()
     console.error(e.message);
     process.exitCode = 1;
   })
-  .finally(() => mongoose.disconnect());
+  .finally(() => closeDb());

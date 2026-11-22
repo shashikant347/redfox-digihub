@@ -30,7 +30,7 @@ router.post('/', submitLimiter, validateQuote, async (req, res, next) => {
     res.status(201).json({
       ok: true,
       message: 'Thanks! Your quote request has been received. We will reply soon.',
-      id: String(quote._id),
+      id: quote._id,
       emailed,
     });
   } catch (err) {

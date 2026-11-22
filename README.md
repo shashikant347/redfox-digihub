@@ -9,11 +9,11 @@ server/   Node.js (Express) backend
 ```
 
 ## Run in development (2 terminals)
-Needs Node 18+ and MongoDB (local, or a free MongoDB Atlas URI).
+Needs Node 18+ and MySQL / MariaDB.
 ```bash
 npm run install:all
-cp server/.env.example server/.env      # set MONGODB_URI and JWT_SECRET
-npm run dev:server                      # API on http://localhost:5000 (first start copies data/content.json into MongoDB)
+cp server/.env.example server/.env      # set DB_NAME, DB_USER, DB_PASSWORD and JWT_SECRET
+npm run dev:server                      # API on http://localhost:5000 (first start copies data/content.json into MySQL; tables are created automatically)
 npm run create-admin --prefix server    # asks for admin email + password
 npm run dev:client                      # site on http://localhost:5173, admin on http://localhost:5173/admin
 ```
@@ -23,7 +23,7 @@ npm run dev:client                      # site on http://localhost:5173, admin o
 npm run build      # builds client/dist
 npm start          # Express serves the API, uploads and the built site on :5000
 ```
-Production needs `JWT_SECRET` (32+ chars) and HTTPS (login cookie is `Secure`). Back up MongoDB and `server/uploads/`.
+Production needs `JWT_SECRET` (32+ chars) and HTTPS (login cookie is `Secure`). Back up the MySQL database and `server/uploads/`.
 
 ## Admin panel: /admin
 Login with email + password (bcrypt hash, httpOnly SameSite=Strict cookie, login rate limit).

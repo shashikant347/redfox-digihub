@@ -30,15 +30,10 @@ export function publicService(s) {
   };
 }
 
-/** Builds the same JSON shape the React site always used, now from MongoDB. */
+/** Builds the same JSON shape the React site always used, now from MySQL. */
 export async function getContent() {
   if (cache) return cache;
-  const [services, work, settings] = await Promise.all([
-    Service.find().sort({ order: 1, createdAt: 1 }).lean(),
-    WorkItem.find().sort({ order: 1, createdAt: 1 }).lean(),
-    Setting.find().lean(),
-  ]);
-  const s = Object.fromEntries(settings.map((x) => [x.key, x.value]));
+  const [services, work, s] = await Promise.all([Service.list(), WorkItem.list(), Setting.all()]);
   cache = {
     brand: s.brand || {},
     services: services.map(publicService),
@@ -71,12 +66,12 @@ export async function getServiceOptions() {
   return [...content.services.map((s) => s.title), 'Multiple services'];
 }
 
-/** First start: copy data/content.json into MongoDB. Runs only once. */
+/** First start: copy data/content.json into MySQL. Runs only once. */
 export async function seedIfEmpty() {
-  if (await Setting.exists({ key: '_seeded' })) return;
+  if (await Setting.has('_seeded')) return;
   const seed = JSON.parse(await fs.readFile(config.seedFile, 'utf-8'));
 
-  if (!(await Service.exists({}))) {
+  if ((await Service.count()) === 0) {
     await Service.insertMany(
       seed.services.map((s, i) => ({
         slug: s.id,
@@ -89,15 +84,15 @@ export async function seedIfEmpty() {
       }))
     );
   }
-  if (!(await WorkItem.exists({}))) {
+  if ((await WorkItem.count()) === 0) {
     await WorkItem.insertMany(
       seed.work.map((w, i) => ({ title: w.title, category: w.category, kind: w.kind, order: i }))
     );
   }
   const keys = ['brand', 'faq', 'checklist', 'stats', 'why', 'process', 'workFilters', 'images', 'about', 'extra'];
   for (const key of keys) {
-    await Setting.updateOne({ key }, { $setOnInsert: { value: seed[key] } }, { upsert: true });
+    await Setting.setIfMissing(key, seed[key] ?? null);
   }
-  await Setting.create({ key: '_seeded', value: true });
-  console.log('Seeded MongoDB from data/content.json');
+  await Setting.set('_seeded', true);
+  console.log('Seeded MySQL from data/content.json');
 }
