@@ -9,7 +9,7 @@ export default function Footer({ brand, services }) {
         <div className="cols">
           <div>
             <Logo brand={brand} light />
-            <p style={{ marginTop: 16 }}>Branding, websites, marketing and photography from one team.</p>
+            <p style={{ marginTop: 16 }}>Branding, websites, marketing and Photo, Video & Reel from one team.</p>
           </div>
           <div>
             <h4>Pages</h4>

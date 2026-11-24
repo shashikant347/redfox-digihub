@@ -1,4 +1,4 @@
-# REDFOX Studio – React + Node.js
+# REDFOX online – React + Node.js
 
 Converted from the single `redfox-digihub.html` page. The design is unchanged (same CSS); the page is now
 React components, and a Node/Express backend serves the content and stores quote requests.

@@ -39,7 +39,7 @@ Routes are declared in client\src\admin\AdminApp.jsx.
 - FAQ: add, edit, remove and save questions/answers.
 - Quotes: view requests, filter by status, show details, change status, delete.
   Status values are new, contacted, won, and closed.
-- Settings: edit studio/contact details and social links; change the current
+- Settings: edit online/contact details and social links; change the current
   Admin's password.
 
 3. DYNAMIC WEBSITE DATA
@@ -59,7 +59,7 @@ Data editable in the current Admin UI:
   content (headline, intro, benefits, deliverables, steps, audience and FAQs).
 - Work: title, category, label, image and ordering.
 - FAQ question-and-answer list.
-- Brand/contact: studio name, tagline, website, email, phone, WhatsApp URL,
+- Brand/contact: online name, tagline, website, email, phone, WhatsApp URL,
   address, map URL and social links.
 - Quotes submitted by visitors: contact details, service, project details,
   creation date, status and internal notes. The current UI does not expose

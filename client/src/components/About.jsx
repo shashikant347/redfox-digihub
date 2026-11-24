@@ -27,7 +27,7 @@ export default function About({ checklist, stats }) {
           <span className="visual-spark" />
           <div className="brand-card">
             <div className="brand-card-top">
-              <span className="brand-card-label">REDFOX studio</span>
+              <span className="brand-card-label">REDFOX online</span>
               <span className="brand-card-mark">R</span>
             </div>
             <div>

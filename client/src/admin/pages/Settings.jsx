@@ -18,7 +18,7 @@ function Brand() {
     <form className="ad-card ad-form" onSubmit={save}>
       <h2>Contact details and social links</h2>
       <Notice notice={notice} />
-      <Field label="Studio name"><Input value={b.name} onChange={set('name')} /></Field>
+      <Field label="online name"><Input value={b.name} onChange={set('name')} /></Field>
       <Field label="Tagline"><Input value={b.tagline} onChange={set('tagline')} /></Field>
       <Field label="Website"><Input value={b.website} onChange={set('website')} /></Field>
       <Field label="Email"><Input type="email" value={b.email} onChange={set('email')} /></Field>

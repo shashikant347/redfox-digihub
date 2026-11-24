@@ -9,7 +9,7 @@ export const PAGE_SCHEMA = [
       f('home.chip', 'Small tag above the heading', 'creating next', { max: 40 }),
       f('home.title1', 'Heading, line 1', 'Design. Build.', { max: 60 }),
       f('home.titleAccent', 'Heading, line 2 (coloured word)', 'Grow.', { max: 40 }),
-      f('home.text', 'Text under the heading', 'Branding, websites, marketing and photography from one team. Tell us what you need and get a quote.', { area: true, max: 300 }),
+      f('home.text', 'Text under the heading', 'Branding, websites, marketing and Photo, Video & Reel from one team. Tell us what you need and get a quote.', { area: true, max: 300 }),
       f('home.btnPrimary', 'Main button text', 'Get quote', { max: 30 }),
       f('home.btnSecondary', 'Second button text', 'Our services', { max: 30 }),
     ],
@@ -67,7 +67,7 @@ export const PAGE_SCHEMA = [
       f('about.storyTag', 'Story small tag', 'Our story', { max: 40 }),
       f('about.storyTitle', 'Story heading', 'Why we work as one team', { max: 120 }),
       f('about.teamTag', 'Team small tag', 'The team', { max: 40 }),
-      f('about.teamTitle', 'Team heading', 'Five skills, one studio', { max: 120 }),
+      f('about.teamTitle', 'Team heading', 'Five skills, one online', { max: 120 }),
       f('about.teamLead', 'Team text', 'Everyone you need for a brand sits in the same team, so work moves faster and looks consistent.', { area: true, max: 300 }),
     ],
   },
@@ -88,10 +88,10 @@ export function buildPages(stored = {}) {
 }
 
 export const SEO_PAGES = [
-  { key: 'home', label: 'Home', title: 'REDFOX — Studio', description: 'Branding, websites, marketing and photography from one team. Tell us what you need and get a quote.' },
-  { key: 'about', label: 'About', title: 'About us', description: 'REDFOX is an advertising and marketing studio. Design, development, photography and marketing in one team.' },
-  { key: 'services', label: 'Services', title: 'Services', description: 'Brand design, web development, web design, digital marketing, photography and graphic design from one team.' },
-  { key: 'work', label: 'Work', title: 'Our work', description: 'Browse sample concepts for branding, websites, marketing and photography.' },
+  { key: 'home', label: 'Home', title: 'REDFOX — online', description: 'Branding, websites, marketing and Photo, Video & Reel from one team. Tell us what you need and get a quote.' },
+  { key: 'about', label: 'About', title: 'About us', description: 'REDFOX is an advertising and marketing online. Design, development, Photo, Video & Reel and marketing in one team.' },
+  { key: 'services', label: 'Services', title: 'Services', description: 'Brand design, web development, web design, digital marketing, Photo, Video & Reel and graphic design from one team.' },
+  { key: 'work', label: 'Work', title: 'Our work', description: 'Browse sample concepts for branding, websites, marketing and Photo, Video & Reel.' },
   { key: 'process', label: 'Process', title: 'How we work', description: 'Six clear steps from your first message to results. See how a REDFOX project runs.' },
   { key: 'faq', label: 'FAQ', title: 'Questions', description: 'Quick answers about quotes, timelines, pricing and how we work.' },
   { key: 'contact', label: 'Contact', title: 'Contact us', description: 'Tell us what you need. We reply with a plan, timeline and quote.' },

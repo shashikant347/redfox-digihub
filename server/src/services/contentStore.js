@@ -68,31 +68,46 @@ export async function getServiceOptions() {
 
 /** First start: copy data/content.json into MySQL. Runs only once. */
 export async function seedIfEmpty() {
-  if (await Setting.has('_seeded')) return;
   const seed = JSON.parse(await fs.readFile(config.seedFile, 'utf-8'));
 
-  if ((await Service.count()) === 0) {
-    await Service.insertMany(
-      seed.services.map((s, i) => ({
-        slug: s.id,
-        title: s.title,
-        text: s.text,
-        points: s.points,
-        image: s.image,
-        detail: s.detail,
-        order: i,
-      }))
-    );
+  if (!(await Setting.has('_seeded'))) {
+    if ((await Service.count()) === 0) {
+      await Service.insertMany(
+        seed.services.map((s, i) => ({
+          slug: s.id,
+          title: s.title,
+          text: s.text,
+          points: s.points,
+          image: s.image,
+          detail: s.detail,
+          order: i,
+        }))
+      );
+    }
+    if ((await WorkItem.count()) === 0) {
+      await WorkItem.insertMany(
+        seed.work.map((w, i) => ({ title: w.title, category: w.category, kind: w.kind, order: i }))
+      );
+    }
+    const keys = ['brand', 'faq', 'checklist', 'stats', 'why', 'process', 'workFilters', 'images', 'about', 'extra'];
+    for (const key of keys) {
+      await Setting.setIfMissing(key, seed[key] ?? null);
+    }
+    await Setting.set('_seeded', true);
+    console.log('Seeded MySQL from data/content.json');
   }
-  if ((await WorkItem.count()) === 0) {
-    await WorkItem.insertMany(
-      seed.work.map((w, i) => ({ title: w.title, category: w.category, kind: w.kind, order: i }))
-    );
+
+  // One-time migration: refresh the industries list for databases seeded before these categories were added.
+  if (!(await Setting.has('_industries_v1'))) {
+    const extra = (await Setting.get('extra')) || {};
+    extra.industries = {
+      ...seed.extra.industries,
+      ...(extra.industries || {}),
+      items: seed.extra.industries.items,
+    };
+    await Setting.set('extra', extra);
+    await Setting.set('_industries_v1', true);
+    invalidateContent();
+    console.log('Updated industries list');
   }
-  const keys = ['brand', 'faq', 'checklist', 'stats', 'why', 'process', 'workFilters', 'images', 'about', 'extra'];
-  for (const key of keys) {
-    await Setting.setIfMissing(key, seed[key] ?? null);
-  }
-  await Setting.set('_seeded', true);
-  console.log('Seeded MySQL from data/content.json');
 }

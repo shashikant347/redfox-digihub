@@ -8,6 +8,8 @@ import Band from '../components/Band.jsx';
 import InfoCards from '../components/InfoCards.jsx';
 import FindUs from '../components/FindUs.jsx';
 import CtaBand from '../components/CtaBand.jsx';
+import VideoShowcase from '../components/VideoShowcase.jsx';
+import Reviews from '../components/Reviews.jsx';
 import useSeo from '../hooks/useSeo.js';
 
 export default function Home({ content }) {
@@ -22,6 +24,8 @@ export default function Home({ content }) {
       <Why items={content.why} {...pages.why} />
       <InfoCards {...extra.approach} />
       <Work filters={content.workFilters} items={content.work} preview {...pages.work} />
+      <Reviews whatsapp={brand.whatsapp} />
+      <VideoShowcase channel={brand.social?.find((item) => item.id === 'youtube')?.url} />
       <InfoCards {...extra.industries} variant="chips" />
       <Band title={pages.band.title} />
       <Marquee words={['Design. Build. Grow.']} repeat={8} className="mq sun rev" />

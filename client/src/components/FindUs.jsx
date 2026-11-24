@@ -6,7 +6,7 @@ export default function FindUs({ brand, cta = true }) {
       <div className="find-box rvx">
         <div>
           <span className="tag">Find us</span>
-          <h2>Visit our studio in Patna</h2>
+          <h2>Visit our online in Patna</h2>
           <p className="lead">Drop in, call or send us your brief online. We are happy to talk about your project.</p>
           <div className="cta">
             <a className="btn" href={brand.mapUrl} target="_blank" rel="noopener noreferrer">Open in Maps</a>

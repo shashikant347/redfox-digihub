@@ -17,7 +17,7 @@ function getTransporter() {
   return transporter;
 }
 
-/** Emails a new quote request to the studio. Resolves to false when SMTP is not configured. */
+/** Emails a new quote request to the online. Resolves to false when SMTP is not configured. */
 export async function sendQuoteEmail(quote) {
   const t = getTransporter();
   if (!t) return false;

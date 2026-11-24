@@ -37,7 +37,7 @@ export default function Hero({ p }) {
           <div className="hero-artboard">
             <div className="hero-artboard-head">
               <span className="hero-brand-dot" />
-              <span>REDFOX / CREATIVE STUDIO</span>
+              <span>REDFOX / CREATIVE online</span>
               <span>01 — 06</span>
             </div>
             <div className="hero-artwork">

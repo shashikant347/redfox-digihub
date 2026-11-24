@@ -376,15 +376,15 @@
       }
     },
     {
-      "id": "photography",
-      "title": "Photography",
+      "id": "Photo, Video & Reel",
+      "title": "Photo, Video & Reel",
       "text": "Product and brand photos that show your work at its best.",
       "points": [
         "Product and catalogue shoots",
         "Brand and team portraits",
         "Edited, web-ready photos"
       ],
-      "image": "/images/service-photography.svg",
+      "image": "/images/service-Photo, Video & Reel.svg",
       "detail": {
         "headline": "Photos that make your work look its best",
         "intro": "Strong photos make people stop scrolling and start trusting you. We shoot products, spaces and people with good light and clean styling, then edit everything so it is ready for your website, social media and print.",
@@ -407,7 +407,7 @@
           }
         ],
         "deliverables": [
-          "Product and catalogue photography",
+          "Product and catalogue Photo, Video & Reel",
           "Brand and team portraits",
           "Shop and workspace shots",
           "Colour correction and editing",
@@ -566,7 +566,7 @@
     {
       "n": "01",
       "title": "One team",
-      "text": "Design, development, photography and marketing work together, so nothing looks mismatched."
+      "text": "Design, development, Photo, Video & Reel and marketing work together, so nothing looks mismatched."
     },
     {
       "n": "02",
@@ -654,7 +654,7 @@
     {
       "id": "t4",
       "category": "photo",
-      "kind": "Photography",
+      "kind": "Photo, Video & Reel",
       "title": "Product shoot"
     },
     {
@@ -723,7 +723,7 @@
   "images": {
     "aboutHero": {
       "src": "/images/about-hero.svg",
-      "alt": "The REDFOX studio desk with a laptop, lamp and plant"
+      "alt": "The REDFOX online desk with a laptop, lamp and plant"
     },
     "aboutStory": {
       "src": "/images/about-story.svg",
@@ -740,7 +740,7 @@
   },
   "about": {
     "title": "One team for your whole brand",
-    "lead": "REDFOX is an advertising and marketing studio. We design the brand, build the website, shoot the photos and run the campaigns, so everything looks and sounds like one business.",
+    "lead": "REDFOX is an advertising and marketing online. We design the brand, build the website, shoot the photos and run the campaigns, so everything looks and sounds like one business.",
     "story": [
       "A business should not need five different agencies to look good and get found. That one idea is how REDFOX works.",
       "Our designers, developers, photographers and marketers sit in one team, so your logo, website, photos and campaigns match from the first draft.",
@@ -764,9 +764,9 @@
         "image": "/images/team-development.svg"
       },
       {
-        "role": "Photography",
+        "role": "Photo, Video & Reel",
         "text": "Product and brand photos that show your work at its best.",
-        "image": "/images/team-photography.svg"
+        "image": "/images/team-Photo, Video & Reel.svg"
       },
       {
         "role": "Marketing",
@@ -821,16 +821,22 @@
       "title": "Businesses of every size and type",
       "lead": "If you sell something or offer a service, we can help people notice you and trust you.",
       "items": [
-        "Retail & shops",
-        "Jewellery",
-        "Food & beverages",
-        "Manufacturing",
-        "Education & coaching",
-        "Real estate",
-        "Healthcare & clinics",
-        "Hotels & events",
-        "Startups",
-        "Local services"
+        "Corporate & Startups",
+        "Retail & Shops",
+        "Shopping Malls & Marts",
+        "Jewellery & Accessories",
+        "Clothing & Footwear",
+        "Cosmetics & Salons",
+        "Decor & Furniture",
+        "Pharma & Healthcare",
+        "Food & Beverages",
+        "Real Estate & Automobiles",
+        "Publishing & Education",
+        "Hotels & Banquets",
+        "News & Entertainment",
+        "Manufacturers & Traders",
+        "Organizations & Politicians",
+        "Local Businesses & Individuals"
       ]
     },
     "included": {
