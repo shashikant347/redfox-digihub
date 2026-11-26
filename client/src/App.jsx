@@ -22,6 +22,7 @@ import WorkPage from './pages/WorkPage.jsx';
 import ProcessPage from './pages/ProcessPage.jsx';
 import FaqPage from './pages/FaqPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
+import BlogPage from './pages/BlogPage.jsx';
 import NotFound from './pages/NotFound.jsx';
 
 export default function App() {
@@ -74,6 +75,7 @@ export default function App() {
         <Route path="/process" element={<ProcessPage content={content} />} />
         <Route path="/faq" element={<FaqPage content={content} />} />
         <Route path="/contact" element={<ContactPage content={content} />} />
+        <Route path="/blog" element={<BlogPage content={content} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer brand={brand} services={services} />

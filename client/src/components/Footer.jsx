@@ -19,6 +19,7 @@ export default function Footer({ brand, services }) {
             <Link to="/process">Process</Link>
             <Link to="/faq">FAQ</Link>
             <Link to="/contact">Contact</Link>
+            <Link to="/blog">Blog</Link>
           </div>
           <div>
             <h4>Services</h4>

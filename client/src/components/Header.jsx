@@ -22,6 +22,7 @@ export default function Header({ brand, services, scrolled, onOpenMenu, menuOpen
         <NavLink to="/process" className={act}>Process</NavLink>
         <NavLink to="/faq" className={act}>FAQ</NavLink>
         <NavLink to="/contact" className={act}>Contact</NavLink>
+        <NavLink to="/blog" className={act}>Blog</NavLink>
       </nav>
       <div className="right">
         <Link className="btn" to="/contact">Get quote</Link>

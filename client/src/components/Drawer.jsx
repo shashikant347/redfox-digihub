@@ -31,6 +31,7 @@ export default function Drawer({ services, open, onClose }) {
         <Link to="/process" onClick={onClose}>Process</Link>
         <Link to="/faq" onClick={onClose}>FAQ</Link>
         <Link to="/contact" onClick={onClose}>Contact</Link>
+        <Link to="/blog" onClick={onClose}>Blog</Link>
         <h4>Services</h4>
         {services.map((s) => (
           <Link key={s.id} className="s" to={`/services/${s.id}`} onClick={onClose}>{s.title}</Link>
