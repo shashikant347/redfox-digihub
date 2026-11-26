@@ -1,3 +1,6 @@
 node_modules
 .env
 server/data/quotes.json
+server/stderr.log
+server/tmp/
+*.log
